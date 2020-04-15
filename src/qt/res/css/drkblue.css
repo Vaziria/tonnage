@@ -1314,7 +1314,7 @@ QWidget .QPushButton#btninfoabout:pressed {
 border:1px solid #9e9e9e;
 }
 
-QWidget .QPushButton#btninfoapools { /* Pools */
+QWidget .QPushButton#btninfopools { /* Pools */
 background-color:rgba(0, 102, 0, 0.5);
 min-height: 20px;
 font-size:9px;
@@ -1330,12 +1330,12 @@ padding-top:2px;
 padding-bottom:2px;
 }
 
-QWidget .QPushButton#btninfoapools {
+QWidget .QPushButton#btninfopools {
 background-color:#7c4003;
 color:#fff;
 }
 
-QWidget .QPushButton#btninfoapools {
+QWidget .QPushButton#btninfopools {
 border:1px solid #9e9e9e;
 }
 
