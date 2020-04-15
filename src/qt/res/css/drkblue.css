@@ -1305,15 +1305,6 @@ padding-top:2px;
 padding-bottom:2px;
 }
 
-QWidget .QPushButton#btninfoabout:hover {
-background-color:#7c4003;
-color:#fff;
-}
-
-QWidget .QPushButton#btninfoabout:pressed {
-border:1px solid #9e9e9e;
-}
-
 QWidget .QPushButton#btninfopools { /* Pools */
 background-color:rgba(0, 102, 0, 0.5);
 min-height: 20px;
@@ -1328,15 +1319,6 @@ padding-left:2px;
 padding-right:2px;
 padding-top:2px;
 padding-bottom:2px;
-}
-
-QWidget .QPushButton#btninfopools:hover {
-background-color:#7c4003;
-color:#fff;
-}
-
-QWidget .QPushButton#btninfopools:pressed {
-border:1px solid #9e9e9e;
 }
 
 QWidget .QPushButton#btninfoexchanges { /* Exchanges */
@@ -1355,16 +1337,6 @@ padding-top:2px;
 padding-bottom:2px;
 }
 
-QWidget .QPushButton#btninfoexchanges:hover  {
-background-color:#7c4003;
-color:#fff;
-}
-
-QWidget .QPushButton#btninfoexchanges:pressed  {
-border:1px solid #9e9e9e;
-}
-
-
 QWidget .QPushButton#btninfochain { /* Chain Info */
 background-color:rgba(0, 102, 0, 0.5);
 min-height: 20px;
@@ -1380,18 +1352,6 @@ padding-right:2px;
 padding-top:2px;
 padding-bottom:2px;
 }
-
-QWidget .QPushButton#btninfochain:hover  {
-background-color:#7c4003;
-color:#fff;
-}
-
-QWidget .QPushButton#btninfochain:pressed  {
-border:1px solid #9e9e9e;
-}
-
-
-
 
 /* MODAL OVERLAY */
 
