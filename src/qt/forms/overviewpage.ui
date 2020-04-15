@@ -813,7 +813,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btninfoexchanges_2">
+        <widget class="QPushButton" name="btninfochain">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/drkblue/about&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Type:&lt;/span&gt; POW/Masternodes &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Algo:&lt;/span&gt; YesPower &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Block Time:&lt;/span&gt; 110 Seconds &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Block Size:&lt;/span&gt; 1mb &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Max Supply:&lt;/span&gt; 40 mil &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Transaction Maturity:&lt;/span&gt; 6 Confirmation &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Mined Block Maturity:&lt;/span&gt; 101 confirmations &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Masternode Collateral:&lt;/span&gt; 1000 SWAMP &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
