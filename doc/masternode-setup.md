@@ -70,18 +70,19 @@ a. Access your VPS and type command
 ip addr
 <br><br>
 You will receive an output similar to the following:<br><br>
-            ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000<br>
-                link/ether 56:00:02:31:fa:7c brd ff:ff:ff:ff:ff:ff<br>
+
+            ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+                link/ether 56:00:02:31:fa:7c brd ff:ff:ff:ff:ff:ff
                 inet <b>49.12.117.64</b>/22 brd 45.32.219.255 scope global ens3<br>
-                   valid_lft forever preferred_lft forever<br>
-                inet6 fe80::5400:2ff:fe31:fa7c/64 scope link<br>
+                   valid_lft forever preferred_lft forever
+                inet6 fe80::5400:2ff:fe31:fa7c/64 scope link
                    valid_lft forever preferred_lft forever
 <br><br>
 The bold area is your ip address.  Save it somewhere for use in the next steps
 <br><br>
 Next you need to think of a prcuser (user name) and rpcpassword (password) to use.  these can be anything, just save them off for the next steps.  Good examples are:<br><br>
     
-    rpcuser=swampcoinawesomeuser123123<br>
+    rpcuser=swampcoinawesomeuser123123
     rpcpassword=878765ghjhg675ytfytufgklhlk
     
 <br><br>
@@ -95,9 +96,9 @@ mn your_ip_address:33333 your_masternode_genkey your_masternode_output<br><br>
 
 This will look similar to the following:<br><br>
 
-mn 49.12.117.64:33333 7Wowe2ZWhjddh1FXxi5UqBqSvGNkx3NsYKY4NLnhStZEJYmMyqg  7422b6e19b55ae41cb153b9be83d50721dfg6fd78a365763a7d35d2840967d54 0 <br><br>
+        mn 49.12.117.64:33333 7Wowe2ZWhjddh1FXxi5UqBqSvGNkx3NsYKY4NLnhStZEJYmMyqg  7422b6e19b55ae41cb153b9be83d50721dfg6fd78a365763a7d35d2840967d54 0 
 
-
+<br><br>
 b. VPS via Command line: In the termial of your VPS create the folder and the file with the following command:<br><br>
 
 mkdir ~/.swampcore && nano ~/.swampcore/masternode.conf<br><br>
