@@ -1,67 +1,178 @@
-Send your wallet that will become a masternode 1000 SWAMP.  
+This guide is designed to create a secure masternode.  That means the coins you have will stay safe in yoru local wallet (i.e. on your pc wallet) and the masternode that will be conencted to by others will be on a different machine (i.e. a VPS such as Vultr) .
 
-Wait for 15 confirmations
+<b><u>Preparing Collateral in Local Wallet</u></b>
 
-open terminal or command line on your linux server
+1. Create an address in your local wallet by:<br>
+    a. QT/GUI Wallet: selecting the Recieve tab, entering a label (name) and pressing the "Rquest Payment" button<br><br>
+    b. Command line: entering command ./swamp-cli getnewaddress<br><br>
+The address will be presented back to you, copy it for use in the next steps
 
-open firewall by entering command: sudo ufw allow 33333
+2. Send your local wallet 1000 SWAMP by:<br>  
+    a. QT/GUI Wallet: selecting the Send tab, entering the address obtained from step 1 in the "Pay To:" field and entering "1000" in the "Amount" field.  Make sure the "Subtract fee from amount" check box is <b>NOT</b> checked.  You will see the transaction on the screen in the Overview and Transactions tab<br><br>
+    b. Command line: entering command ./swamp-cli sendtoaddress "address from step 1" 1000.  The system will give you the TransID as confirmation <br>
 
-if you have a router you will have to forward port 33333 to your linux server
 
-1. enter command: masternode genkey
-    save the response to a text file somewhere
-2. enter command: masternode outputs
-   remove the quotes and the colon from the result and save the response to a text file somewhere.  It will be something like this before removing the extra stuff
-   "Th617hyRHN8kjjkhkjhkjhsdkjfrh676TYGUI": "0"
+3. Now wait for your transaction to have 15 confirmations so the network has been properly updated.  Do this by:
+    a. QT/GUI Wallet: Hovering your mouse over the transaction which will be called "payment to yourself".  Don't worry, it won't show 1000 Swamp coin, only the fee. The wallet will pop up a message such as (6 confirmations, will be available after 10).  You are wating on this to reach 15 confirmations.<br><br>
+    b. Command line: entering command ./swamp-cli listtransactions.  The system will give an output similar to the below, you are waiting on the confirmations to reach 15.<br>
 
-   and look like this after
+                "account": "",
+                    "address": "WXQ2sBjp1bNEqrtiCG934Cd2ES5Egtgf4J",
+                    "category": "received",
+                    "amount": 1000.00000000,
+                    "vout": 1,
+                    "fee": -0.00020582,
+                    <b>"confirmations": 6,</b>
+                    "instantlock": false,
+                    "blockhash": "000004d63c47db2ded3ae015e9e267b28dc64aab48beb768f28c1cb78884dbcd",
+                    "blockindex": 1,
+                    "blocktime": 1581371506,
+                    "txid": "ddd852619c0a0146da4cb3179d6c1181a7a198ef268051680616f532c997fd05",
+                    "walletconflicts": [
+                    ],
+                    "time": 1581371506,
+                    "timereceived": 1582910655,
+                    "bip125-replaceable": "no",
+                    "abandoned": false
+                  }
+<br>
+<b><u>Obtaining Keys in Local Wallet</u></b><br><br>
 
-   Sh617hyRHN8kjjkhkjhkjhsdkjfrh676TYGUI 0
+Running a masternode requires 2 keys, a output and a private key to identify the node on the network.  Both are obtained from the local wallet by:<br><br>
 
-The end result is a long string and number at the end.  The number will be a 1 or 0. 
+a. QT/GUI Wallet: Open the debig console by clicking "Tools" then clicking "Debug Console". In the ext entry space on the bottom of the popup windows enter the following 2 commands and save the long string the system will give you for use them in steps:<br><br>
+        masternode outputs<br>
+        masternode genkey<br><br>
 
-Now you are going to update 2 files ending in .conf  These are located in the data directory your wallet is using.  For me it is ~/.swampcore on ubuntu server 18.04.  When installing the wallet you would have chosen the location.  
+Now remove the quotes and the colon from the result of the masternode outputs command for use in the next steps. The end result is a long string and number at the end.  The number will be a 1 or 0 <br><br>
+b. Command line: enter the following 2 commands and save the long string the system will give you for use them in steps:<br>
+            ./swamp-cli masternode outputs<br>
+            ./swamp-cli masternode genkey<br><br> 
+            
+Now remove the quotes and the colon from the result of the masternode outputs command for use in the next steps. The end result is a long string and number at the end.  The number will be a 1 or 0
 
-The first file you will update is named swamp.conf'.  Edit it with any editor you like. I use nano on ubuntu. For me to open the file in nano I enter: sudo nano ~/.swampcore/swamp.conf
+<br><br>
 
+<b><u>Opening the proper Port on Firewall</u></b><br><br>
+
+It is necessary for other clients to talk to your masternode for it to be rewarded and cosidered Enabled.  
+open the firewall on your VPS by entering command:<br> 
+
+ufw allow 33333
+<br><br>
+If you have your linux server behind a router a router you will have to forward port 33333 to your linux server
+<br><br>
+
+<b><u>Gathering Additional Information Neeeded for .conf Files</u></b><br><br>
+You will need to obtain you public IP address as well as decide on a user name and password for your masternode. Accomplish this by:<br><br>
+a. Access your VPS and type command
+<br><br>
+ip addr
+<br><br>
+You will receive an output similar to the following:<br><br>
+            ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000<br>
+                link/ether 56:00:02:31:fa:7c brd ff:ff:ff:ff:ff:ff<br>
+                inet <b>49.12.117.64</b>/22 brd 45.32.219.255 scope global ens3<br>
+                   valid_lft forever preferred_lft forever<br>
+                inet6 fe80::5400:2ff:fe31:fa7c/64 scope link<br>
+                   valid_lft forever preferred_lft forever
+<br><br>
+The bold area is your ip address.  Save it somewhere for use in the next steps
+<br><br>
+Next you need to think of a prcuser (user name) and rpcpassword (password) to use.  these can be anything, just save them off for the next steps.  Good examples are:<br><br>
+    
+    rpcuser=swampcoinawesomeuser123123<br>
+    rpcpassword=878765ghjhg675ytfytufgklhlk
+    
+<br><br>
+
+<b><u>Preparing the conf Files</u></b><br><br>
+Now you are going to update 2 files ending in .conf on your local machine that you sent the 1000 swamp to as well as create 2 conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
+
+a. QT/GUI Wallet: Click the Tools menu then click "Open Masternode Configuration File" which will open a text file.  In the text file you will paste in the following configuration substituting in the information captured in previous steps.<br><br>
+
+mn your_ip_address:33333 your_masternode_genkey your_masternode_output<br><br>
+
+This will look similar to the following:<br><br>
+
+mn 49.12.117.64:33333 7Wowe2ZWhjddh1FXxi5UqBqSvGNkx3NsYKY4NLnhStZEJYmMyqg  7422b6e19b55ae41cb153b9be83d50721dfg6fd78a365763a7d35d2840967d54 0 <br><br>
+
+
+b. VPS via Command line: In the termial of your VPS create the folder and the file with the following command:<br><br>
+
+mkdir ~/.swampcore && nano ~/.swampcore/masternode.conf<br><br>
+
+Now paste in the following configuration substituting in the information captured in previous steps. It may be easier to do this in a text editor on yoru local machine so you can paste it all in at once.  <br><br>
+
+        mn your_ip_address:33333 your_masternode_genkey your_masternode_output
+<br><br>
+This will look similar to the following:<br><br>
+
+        mn 49.12.117.64:33333 7Wowe2ZWhjddh1FXxi5UqBqSvGNkx3NsYKY4NLnhStZEJYmMyqg  7422b6e19b55ae41cb153b9be83d50721dfg6fd78a365763a7d35d2840967d54 0 
+
+<br><br>
+Save your file.  To save in nano press control and x at the same time, press y to confirm, press enter save<br><br>
+
+The second file you will create is named swamp.conf and will only be done on the VPS.  Create the file in nano by entering the following command:<br><br>
+
+        nano ~/.swampcore/swamp.conf
+
+<br><br>
 Add the following substituting in the info you gathered above<br><br>
 
-listen=1<br>
-server=1<br>
-daemon=1<br>
-rpcuser=any-username-you-want<br>
-rpcpassword=any-password-you-want<br>
-rpcallowip=127.0.0.1<br>
-masternode=1<br>
-masternodeprivkey=enter-the-long-string-you-got-from-step-1<br>
-externalip=enter-the-public-ip-of-your-linux-server-here:33333<br><br>
+        listen=1
+        server=1
+        daemon=1
+        rpcuser=your_rpc_user
+        rpcpassword=your_rpcpassword
+        rpcallowip=127.0.0.1
+        masternode=1
+        masternodeprivkey=your_masternode_genkey
+        externalip=your_ip_address:33333
     
+<br><br>
+Save your file.  To save in nano press control and x at the same time, press y to confirm, press enter save<br><br>
 
-Save your file.  To save in nano press control and x at the same time, press y to confirm, press enter save
+It is now time to download and install the Swamp Coin daemon to run on your VPS/Linux Server.  enter the following commands to download and extract the daemon on your VPS.  If you decide to do this in a different folder other than your home folder you need to kconsider that when starting it alter.  This guide assumes you are putting in in your home folder and running as the root user that most VPS providers give you.  First navigate to the Swamp Coin github at https://github.com/swampcoin/swamp/releases and find the release that matches the VPS operating system you arerunning.  This guide is running it on ubuntu 16.04 so substitute in the url that best matching your system:<br><br>
 
-Next we will edit the file named masternode.conf
+        wget https://github.com/swampcoin/swamp/releases/download/1.3.0/swamp-daemon-ubuntu-16-64bit.zip 
+        unzip swamp-daemon-ubuntu-16-64bit.zip
+        chmod swampd swamp-cl swamp-tx 777
 
-For me to open the file in nano I enter: sudo nano ~/.swampcore/masternode.conf
+<br><br>
+Now its time to start the daemon up, do this by entering the following command:
+<br><br>
 
-Add the following substituting in the info we gathered above. 
+./swampd
+<br><br>
 
-mn <your public ip without brackets>:33333 <the result of #2 above without the brackets>
+When you start the daemon your until it's fully in sync by entering command:
+<br><br>
+        ./swamp-cli mnsync status
 
-It will end up looking something like this
+The output will look similar to the following:<br><br>
 
+          "AssetID": 999,
+          "AssetName": "MASTERNODE_SYNC_FINISHED",
+          "AssetStartTime": 1582306115,
+          "Attempt": 0,
+          "IsBlockchainSynced": true,
+          "IsMasternodeListSynced": true,
+          "IsWinnersListSynced": true,
+          "IsSynced": true,
+          "IsFailed": false
+<br><br>
+When the "IsSynced" row say true you are ready to start the node up by using command: <br><br>
 
-mn 67.166.248.227:33333 7Wowe2ZWhjRdh1FXxi5UqBqSvGNkx3NsYKY4NLnhStZEJYmMyqg 7422b6e19b55ae41cb153b9be83d50721c666fd78a365763a7d35d2840967d54 1
+        ./swamp-cli masternode start-alias mn
+ <br><br>       
 
-
-Save the masternode.conf file.  If using nano press control and x at the same time, press y to confirm, press enter to save
-
-Note: you can also add this line to the masternode.conf file in your windows wallet to control your masterde from there.  
-
-When you restart your wallet you must wait until it's fully in sync and then use command: sudo <path to swamp-cli>./swamp-cli masternode start-alias mn
 The "mn" in the command is the name you gave your node.  Feel free to call it anything you like.
 
-You can check status of your masternode by using command: sudo <path to swamp-cli>/swamp-cli masternode status
+You can check status of your masternode by using command: <br><br>
 
+        ./swamp-cli masternode status
+<br><br>
 If you did everything right you will see "Successfully Started" in the message given
 
 Now its time to set up Sentinel to keep things running smoothly and avoid WATCHDOG_EXPIRED status.  This is not required as your node will still receive oaymenrs but still looks better.  Visit https://github.com/swampcoin/sentinel/blob/master/README.md to continue for Linux and https://github.com/swampcoin/sentinel/blob/master/sentinel-for-windows.md for Windows
