@@ -770,19 +770,6 @@
         <number>2</number>
        </property>
        <item>
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QPushButton" name="btninfoabout">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/crownium/tx_inout&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Swamp Coin was created to help restore the balance to&lt;br/&gt;ecosystems around the world that reptiles and amphibians&lt;br/&gt;call home. As a future 501c3 non-profit charitable&lt;br/&gt;organization, Swamp Coin leverages the power of&lt;br/&gt;blockchain, cryptocurrency and masternodes to help&lt;br/&gt;generate the funding these habitats desperately need. &lt;br/&gt;&lt;br/&gt;Swamp Coin will be accepted by animal rescues to fund the&lt;br/&gt;medical care and adoption fees required to give our swamp&lt;br/&gt;based friends new homes and a chance! We are are a&lt;br/&gt;small team taking a steady pace to build the right network&lt;br/&gt;and partners to slowly but surely chip away of the&lt;br/&gt;overwhelming cost and effort associated with ecosystem&lt;br/&gt;homeostasis.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -795,7 +782,7 @@
        <item>
         <widget class="QPushButton" name="btninfopools">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;img src=&quot;:/icons/trad/tx_mined&quot; width=&quot;48&quot; height=&quot;48&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Swampthing: &lt;/span&gt;&lt;a href=&quot;https://pool.swampthing.net &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://pool.swampthing.net &lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GPUHot:&lt;/span&gt; https://pool.gpuhot.com/ &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hashplex:&lt;/span&gt; http://www.hashpex.com/ &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;RPlant:&lt;/span&gt; https://pool.rplant.xyz/ &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Miner World:&lt;/span&gt; https://miner-world.com &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Block Miner:&lt;/span&gt; http://blockminer.me &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;img src=&quot;:/icons/trad/tx_mined&quot; width=&quot;48&quot; height=&quot;48&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Swampthing: &lt;/span&gt;&lt;a href=&quot;https://pool.swampthing.net &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://pool.swampthing.net &lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;GPUHot:&lt;/span&gt; https://gpuhot.com/ &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hashplex:&lt;/span&gt; http://www.hashpex.com/ &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;RPlant:&lt;/span&gt; https://pool.rplant.xyz/ &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Miner World:&lt;/span&gt; https://miner-world.com &lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Block Miner:&lt;/span&gt; http://blockminer.me &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>Pools</string>
