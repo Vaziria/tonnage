@@ -55,7 +55,7 @@ mn 67.166.248.227:33333 7Wowe2ZWhjRdh1FXxi5UqBqSvGNkx3NsYKY4NLnhStZEJYmMyqg 7422
 
 Save the masternode.conf file.  If using nano press control and x at the same time, press y to confirm, press enter to save
 
-Note: you can also glad this line to the masternode.conf file in your windows wallet to control your masterde from there.  
+Note: you can also add this line to the masternode.conf file in your windows wallet to control your masterde from there.  
 
 When you restart your wallet you must wait until it's fully in sync and then use command: sudo <path to swamp-cli>./swamp-cli masternode start-alias mn
 The "mn" in the command is the name you gave your node.  Feel free to call it anything you like.
