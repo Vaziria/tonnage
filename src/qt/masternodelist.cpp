@@ -290,7 +290,7 @@ void MasternodeList::updateNodeList()
 
                 if (strCurrentFilter != "") {
             strToFilter = QString::fromStdString(mn.addr.ToString()) + " " +
-                          QString::number(mn.protocolVersion) + " " +
+                          QString::number(mn.nProtocolVersion) + " " +
                           QString::fromStdString(mn.GetStatus()) + " " +
                           QString::number(mn.lastPing.sigTime - mn.sigTime) + " " +
                           QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", mn.lastPing.sigTime)) + " " +
