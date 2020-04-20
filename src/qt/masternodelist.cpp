@@ -288,14 +288,13 @@ void MasternodeList::updateNodeList()
         QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", mn.lastPing.sigTime + offsetFromUtc)));
         QTableWidgetItem *pubkeyItem = new QTableWidgetItem(QString::fromStdString(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
 
-        if (strCurrentFilter != "")
-        {
-            strToFilter =   addressItem->text() + " " +
-                            protocolItem->text() + " " +
-                            statusItem->text() + " " +
-                            activeSecondsItem->text() + " " +
-                            lastSeenItem->text() + " " +
-                            pubkeyItem->text();
+                if (strCurrentFilter != "") {
+            strToFilter = QString::fromStdString(mn.addr.ToString()) + " " +
+                          QString::number(mn.nProtocolVersion) + " " +
+                          QString::fromStdString(mn.GetStatus()) + " " +
+                          QString::number(mn.lastPing.sigTime - mn.sigTime) + " " +
+                          QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", mn.lastPing.sigTime)) + " " +
+                          QString::fromStdString(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString());
             if (!strToFilter.contains(strCurrentFilter)) continue;
         }
 
