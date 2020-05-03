@@ -18,7 +18,7 @@ Before you can run a masternode you have to be able to run the Swamp Coin daemon
 <b><u>Preparing Collateral in Local Wallet</u></b>
 
 1. Create an address in your local wallet by:<br>
-    a. QT/GUI Wallet: selecting the Recieve tab, entering a label (name) and pressing the "Rquest Payment" button<br><br>
+    a. QT/GUI Wallet: selecting the Recieve tab, entering a label (name) and pressing the "Request Payment" button<br><br>
     b. Command line: entering command ./swamp-cli getnewaddress<br><br>
 The address will be presented back to you, copy it for use in the next steps
 
@@ -53,7 +53,7 @@ The address will be presented back to you, copy it for use in the next steps
 <br>
 <b><u>Obtaining Keys in Local Wallet</u></b><br><br>
 
-Running a masternode requires 2 keys, a output and a private key to identify the node on the network.  Both are obtained from the local wallet by:<br><br>
+Running a masternode requires 2 keys, an output and a private key to identify the node on the network.  Both are obtained from the local wallet by:<br><br>
 
 a. QT/GUI Wallet: Open the debig console by clicking "Tools" then clicking "Debug Console". In the ext entry space on the bottom of the popup windows enter the following 2 commands and save the long string the system will give you for use them in steps:<br><br>
         masternode outputs<br>
@@ -71,14 +71,14 @@ Now remove the quotes and the colon from the result of the masternode outputs co
 <b><u>Opening the proper Port on Firewall</u></b><br><br>
 
 It is necessary for other clients to talk to your masternode for it to be rewarded and cosidered Enabled.  
-open the firewall on your VPS by entering command:<br> 
+Open the firewall on your VPS by entering command:<br> 
 
 ufw allow 33333
 <br><br>
-If you have your linux server behind a router a router you will have to forward port 33333 to your linux server
+If you have your linux server behind a router you will have to forward port 33333 to your linux server
 <br><br>
 
-<b><u>Gathering Additional Information Neeeded for .conf Files</u></b><br><br>
+<b><u>Gathering Additional Information Needed for .conf Files</u></b><br><br>
 You will need to obtain you public IP address as well as decide on a user name and password for your masternode. Accomplish this by:<br><br>
 a. Access your VPS and type command
 <br><br>
@@ -95,7 +95,7 @@ You will receive an output similar to the following:<br><br>
 <br><br>
 The bold area is your ip address.  Save it somewhere for use in the next steps
 <br><br>
-Next you need to think of a prcuser (user name) and rpcpassword (password) to use.  these can be anything, just save them off for the next steps.  Good examples are:<br><br>
+Next you need to think of a rpcuser (user name) and rpcpassword (password) to use.  these can be anything, just save them off for the next steps.  Good examples are:<br><br>
     
     rpcuser=swampcoinawesomeuser123123
     rpcpassword=878765ghjhg675ytfytufgklhlk
@@ -103,7 +103,7 @@ Next you need to think of a prcuser (user name) and rpcpassword (password) to us
 <br><br>
 
 <b><u>Preparing the conf Files</u></b><br><br>
-Now you are going to update 2 files ending in .conf on your local machine that you sent the 1000 swamp to as well as create 2 conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
+Now you are going to update 2 files ending in .conf on your local machine that you sent the 1000 swamp to as well as create 2 .conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
 
 a. QT/GUI Wallet: Click the Tools menu then click "Open Masternode Configuration File" which will open a text file.  In the text file you will paste in the following configuration substituting in the information captured in previous steps.<br><br>
 
@@ -118,7 +118,7 @@ b. VPS via Command line: In the termial of your VPS create the folder and the fi
 
 mkdir ~/.swampcore && nano ~/.swampcore/masternode.conf<br><br>
 
-Now paste in the following configuration substituting in the information captured in previous steps. It may be easier to do this in a text editor on yoru local machine so you can paste it all in at once.  <br><br>
+Now paste in the following configuration substituting in the information captured in previous steps. It may be easier to do this in a text editor on your local machine so you can paste it all in at once.  <br><br>
 
         mn your_ip_address:33333 your_masternode_genkey your_masternode_output
 <br><br>
@@ -162,7 +162,7 @@ Now its time to start the daemon up, do this by entering the following command:
 ./swampd
 <br><br>
 
-When you start the daemon your until it's fully in sync by entering command:
+When you start the daemon you must wait until it's fully in sync by entering command:
 <br><br>
         ./swamp-cli mnsync status
 
@@ -191,6 +191,6 @@ You can check status of your masternode by using command: <br><br>
 <br><br>
 If you did everything right you will see "Successfully Started" in the message given
 
-Now its time to set up Sentinel to keep things running smoothly and avoid WATCHDOG_EXPIRED status.  This is not required as your node will still receive oaymenrs but still looks better.  Visit https://github.com/swampcoin/sentinel/blob/master/README.md to continue for Linux and https://github.com/swampcoin/sentinel/blob/master/sentinel-for-windows.md for Windows
+Now its time to set up Sentinel to keep things running smoothly and avoid WATCHDOG_EXPIRED status.  This is not required as your node will still receive paymenrs but still looks better.  Visit https://github.com/swampcoin/sentinel/blob/master/README.md to continue for Linux and https://github.com/swampcoin/sentinel/blob/master/sentinel-for-windows.md for Windows
 
 
