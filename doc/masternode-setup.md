@@ -2,7 +2,7 @@ This guide is designed to create a secure masternode.  That means the coins you 
 
 <b><u>Installing Dependeincies for swamp Coin on Your VPS</u></b><br><br>
 
-Before youc an run a masternode you have to be able torun the Swamp COin daemon.  THis requires the installation of several dependenicies.  To install these run the following commands on your VPS:<br><br>
+Before you can run a masternode you have to be able torun the Swamp COin daemon.  THis requires the installation of several dependenicies.  To install these run the following commands on your VPS:<br><br>
 
         sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
 
