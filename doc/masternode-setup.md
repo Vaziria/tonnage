@@ -1,4 +1,4 @@
-This guide is designed to create a secure masternode.  That means the coins you have will stay safe in yoru local wallet (i.e. on your pc wallet) and the masternode that will be conencted to by others will be on a different machine (i.e. a VPS such as Vultr) .
+This guide is designed to create a secure masternode.  That means the coins you have will stay safe in your local wallet (i.e. on your pc wallet) and the masternode that will be conencted to by others will be on a different machine (i.e. a VPS such as Vultr) .
 
 <b><u>Installing Dependeincies for swamp Coin on Your VPS</u></b><br><br>
 
