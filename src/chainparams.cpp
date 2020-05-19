@@ -109,7 +109,7 @@ public:
         pchMessageStart[1] = 0x77; //w
         pchMessageStart[2] = 0x61; //a
         pchMessageStart[3] = 0x6d; //m
-	vAlertPubKey = ParseHex("047738e763b45593b3bc080cfd2ec07ce725d2c39b18e4bccced4ed75856afa15e88399cc894bbe9f10d98dd715081a27d3c45e5e7382f07c4c6bd32a9acda5c7d");
+	    vAlertPubKey = ParseHex("047738e763b45593b3bc080cfd2ec07ce725d2c39b18e4bccced4ed75856afa15e88399cc894bbe9f10d98dd715081a27d3c45e5e7382f07c4c6bd32a9acda5c7d");
         nDefaultPort = 33333;
         
         nMaxTipAge = 21600;
@@ -173,9 +173,9 @@ public:
     CTestNetParams() {
         strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 210240;
-        consensus.nMasternodePaymentsStartBlock = 4010;
-        consensus.nMasternodePaymentsIncreaseBlock = 4030;
-        consensus.nMasternodePaymentsIncreasePeriod = 10;
+        consensus.nMasternodePaymentsStartBlock = 50;
+        consensus.nMasternodePaymentsIncreaseBlock = 100;
+        consensus.nMasternodePaymentsIncreasePeriod = 100;
         consensus.nInstantSendKeepLock = 6;
         consensus.nBudgetPaymentsStartBlock = 4100;
         consensus.nBudgetPaymentsCycleBlocks = 50;
@@ -225,9 +225,9 @@ public:
         pchMessageStart[0] = 0x73; //s
         pchMessageStart[1] = 0x77; //w
         pchMessageStart[2] = 0x6d; //m
-	pchMessageStart[3] = 0x70; //p 
+	    pchMessageStart[3] = 0x70; //p 
         vAlertPubKey = ParseHex("04a6df8bb80ab3113dcae21d2a9ced9b2f48811ce079e44a19a53d0aae223388b79f5dfec3abe9dccfe250edd0caf243168ce4f0965fd8f0857c390c76da1a1db1");
-        nDefaultPort = 16919;
+        nDefaultPort = 33445;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
