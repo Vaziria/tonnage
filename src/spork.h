@@ -36,11 +36,11 @@ static const int64_t SPORK_3_INSTANTSEND_BLOCK_FILTERING_DEFAULT        = 0;    
 static const int64_t SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT              = 1000;         // 1000 SWAMP
 static const int64_t SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT     = 1540166400;   // ON
 static const int64_t SPORK_9_SUPERBLOCKS_ENABLED_DEFAULT                = 4070908800ULL;// OFF
-static const int64_t SPORK_10_MASTERNODE_PAY_UPDATED_NODES_DEFAULT      = 1590167405;   // ON
+static const int64_t SPORK_10_MASTERNODE_PAY_UPDATED_NODES_DEFAULT      = 1591491600;   // ON
 static const int64_t SPORK_12_RECONSIDER_BLOCKS_DEFAULT                 = 0;            // 0 BLOCKS
 static const int64_t SPORK_13_OLD_SUPERBLOCK_FLAG_DEFAULT               = 4070908800ULL;// OFF
 static const int64_t SPORK_14_REQUIRE_SENTINEL_FLAG_DEFAULT             = 4070908800ULL;// OFF
-static const int64_t SPORK_15_REQUIRE_NEW_PROTOCOL_DEFAULT              = 1590108910;   // ON
+static const int64_t SPORK_15_REQUIRE_NEW_PROTOCOL_DEFAULT              = 1591491600;   // ON
 
 extern std::map<uint256, CSporkMessage> mapSporks;
 extern CSporkManager sporkManager;
