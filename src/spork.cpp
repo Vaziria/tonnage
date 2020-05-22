@@ -135,7 +135,7 @@ bool CSporkManager::IsSporkActive(int nSporkID)
             case SPORK_12_RECONSIDER_BLOCKS:                r = SPORK_12_RECONSIDER_BLOCKS_DEFAULT; break;
             case SPORK_13_OLD_SUPERBLOCK_FLAG:              r = SPORK_13_OLD_SUPERBLOCK_FLAG_DEFAULT; break;
             case SPORK_14_REQUIRE_SENTINEL_FLAG:            r = SPORK_14_REQUIRE_SENTINEL_FLAG_DEFAULT; break;
-			case SPORK_15_REQUIRE_NEW_PROTOCOL:             r = SPORK_15_REQUIRE_NEW_PROTOCOL _DEFAULT; break;
+			case SPORK_15_REQUIRE_NEW_PROTOCOL:             r = SPORK_15_REQUIRE_NEW_PROTOCOL_DEFAULT; break;
             default:
                 LogPrint("spork", "CSporkManager::IsSporkActive -- Unknown Spork ID %d\n", nSporkID);
                 r = 4070908800ULL; // 2099-1-1 i.e. off by default
