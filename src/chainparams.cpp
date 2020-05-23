@@ -125,6 +125,7 @@ public:
         vSeeds.push_back(CDNSSeedData("45.32.217.164", "45.32.217.164"));
 		vSeeds.push_back(CDNSSeedData("108.61.202.115", "108.61.202.115"));
 		vSeeds.push_back(CDNSSeedData("104.207.149.95", "104.207.149.95"));
+		vSeeds.push_back(CDNSSeedData("45.32.176,249", "45.32.176,249"));
 		vSeeds.push_back(CDNSSeedData("swamp1.trustplus.com", "swamp1.trustplus.com"));
 
 
