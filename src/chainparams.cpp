@@ -109,7 +109,7 @@ public:
         pchMessageStart[1] = 0x77; //w
         pchMessageStart[2] = 0x61; //a
         pchMessageStart[3] = 0x6d; //m
-	vAlertPubKey = ParseHex("047738e763b45593b3bc080cfd2ec07ce725d2c39b18e4bccced4ed75856afa15e88399cc894bbe9f10d98dd715081a27d3c45e5e7382f07c4c6bd32a9acda5c7d");
+	    vAlertPubKey = ParseHex("047738e763b45593b3bc080cfd2ec07ce725d2c39b18e4bccced4ed75856afa15e88399cc894bbe9f10d98dd715081a27d3c45e5e7382f07c4c6bd32a9acda5c7d");
         nDefaultPort = 33333;
         
         nMaxTipAge = 21600;
@@ -123,7 +123,10 @@ public:
 
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("45.32.217.164", "45.32.217.164"));
-		//vSeeds.push_back(CDNSSeedData("45.32.217.164", "45.32.217.164"));
+		vSeeds.push_back(CDNSSeedData("108.61.202.115", "108.61.202.115"));
+		vSeeds.push_back(CDNSSeedData("104.207.149.95", "104.207.149.95"));
+		vSeeds.push_back(CDNSSeedData("45.32.176,249", "45.32.176,249"));
+		vSeeds.push_back(CDNSSeedData("swamp1.trustplus.com", "swamp1.trustplus.com"));
 
 
         // Swamp addresses start with 's'
@@ -173,9 +176,9 @@ public:
     CTestNetParams() {
         strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 210240;
-        consensus.nMasternodePaymentsStartBlock = 4010;
-        consensus.nMasternodePaymentsIncreaseBlock = 4030;
-        consensus.nMasternodePaymentsIncreasePeriod = 10;
+        consensus.nMasternodePaymentsStartBlock = 50;
+        consensus.nMasternodePaymentsIncreaseBlock = 100;
+        consensus.nMasternodePaymentsIncreasePeriod = 100;
         consensus.nInstantSendKeepLock = 6;
         consensus.nBudgetPaymentsStartBlock = 4100;
         consensus.nBudgetPaymentsCycleBlocks = 50;
@@ -193,7 +196,7 @@ public:
         consensus.BIP34Hash = uint256S("0x00000997e30aad936446ab7226cecd21875e867a57aca1a46d17be4316bab391");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Swamp: 1 day
-        consensus.nPowTargetSpacing = 2.0 * 60; // almost 2.0 minutes
+        consensus.nPowTargetSpacing = 1.0 * 60; // almost 1.0 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 0;
@@ -217,7 +220,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 50; // 50% of 100
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000100010");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00000997e30aad936446ab7226cecd21875e867a57aca1a46d17be4316bab391");
@@ -225,9 +228,9 @@ public:
         pchMessageStart[0] = 0x73; //s
         pchMessageStart[1] = 0x77; //w
         pchMessageStart[2] = 0x6d; //m
-	pchMessageStart[3] = 0x70; //p 
+	    pchMessageStart[3] = 0x70; //p 
         vAlertPubKey = ParseHex("04a6df8bb80ab3113dcae21d2a9ced9b2f48811ce079e44a19a53d0aae223388b79f5dfec3abe9dccfe250edd0caf243168ce4f0965fd8f0857c390c76da1a1db1");
-        nDefaultPort = 16919;
+        nDefaultPort = 33445;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
@@ -260,8 +263,8 @@ public:
 
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
-        fRequireStandard = false;
-        fMineBlocksOnDemand = true;
+        fRequireStandard = true;
+        fMineBlocksOnDemand = false;
         fTestnetToBeDeprecatedFieldRPC = true;
 
         nPoolMaxTransactions = 3;
