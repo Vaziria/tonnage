@@ -2,7 +2,7 @@ This guide is designed to create a secure masternode.  That means the coins you 
 
 <b><u>Installing Dependeincies for swamp Coin on Your VPS</u></b><br><br>
 
-Before you can run a masternode you have to be able to run the Swamp Coin daemon.  This requires the installation of several dependenicies.  To install these run the following commands on your VPS:<br><br>
+Before you can run a masternode you have to be able to run the Swamp Coin daemon/wallet.  This requires the installation of several dependenicies.  To install these run the following commands on your VPS:<br><br>
 
         sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
 
@@ -22,7 +22,7 @@ Before you can run a masternode you have to be able to run the Swamp Coin daemon
     b. Command line: entering command ./swamp-cli getnewaddress<br><br>
 The address will be presented back to you, copy it for use in the next steps
 
-2. Send your local wallet 1000 SWAMP by:<br>  
+2. Send your local wallet 20000 SWAMP by:<br>  
     a. QT/GUI Wallet: selecting the Send tab, entering the address obtained from step 1 in the "Pay To:" field and entering "1000" in the "Amount" field.  Make sure the "Subtract fee from amount" check box is <b>NOT</b> checked.  You will see the transaction on the screen in the Overview and Transactions tab<br><br>
     b. Command line: entering command ./swamp-cli sendtoaddress "address from step 1" 1000.  The system will give you the TransID as confirmation <br>
 
@@ -34,7 +34,7 @@ The address will be presented back to you, copy it for use in the next steps
                 "account": "",
                     "address": "WXQ2sBjp1bNEqrtiCG934Cd2ES5Egtgf4J",
                     "category": "received",
-                    "amount": 1000.00000000,
+                    "amount": 20000.00000000,
                     "vout": 1,
                     "fee": -0.00020582,
                     <b>"confirmations": 6,</b>
@@ -149,11 +149,11 @@ Add the following substituting in the info you gathered above<br><br>
 <br><br>
 Save your file.  To save in nano press control and x at the same time, press y to confirm, press enter save<br><br>
 
-It is now time to download and install the Swamp Coin daemon to run on your VPS/Linux Server.  enter the following commands to download and extract the daemon on your VPS.  If you decide to do this in a different folder other than your home folder you need to kconsider that when starting it alter.  This guide assumes you are putting in in your home folder and running as the root user that most VPS providers give you.  First navigate to the Swamp Coin github at https://github.com/swampcoin/swamp/releases and find the release that matches the VPS operating system you arerunning.  This guide is running it on ubuntu 16.04 so substitute in the url that best matching your system:<br><br>
+It is now time to download and install the Swamp Coin daemon to run on your VPS/Linux Server.  enter the following commands to download and extract the daemon on your VPS.  If you decide to do this in a different folder other than your home folder you need to kconsider that when starting it alter.  This guide assumes you are putting in in your home folder and running as the root user that most VPS providers give you.  First navigate to the Swamp Coin github at https://github.com/swampcoin/swamp/releases and find the release that matches the VPS operating system you arerunning.  This guide is running it on ubuntu 18.04 so substitute in the url that best matching your system:<br><br>
 
-        wget https://github.com/swampcoin/swamp/releases/download/1.3.0/swamp-daemon-ubuntu-16-64bit.zip 
-        unzip swamp-daemon-ubuntu-16-64bit.zip
-        chmod swampd swamp-cl swamp-tx 777
+        wget https://github.com/swampcoin/swamp/releases/download/v2.0.0.2/swamp-v2002-ubuntu18-64.zip
+        unzip swamp-v2002-ubuntu18-64.zip
+        chmod swampd swamp-cl swamp-tx 755
 
 <br><br>
 Now its time to start the daemon up, do this by entering the following command:
@@ -175,7 +175,7 @@ The output will look similar to the following:<br><br>
           "IsBlockchainSynced": true,
           "IsMasternodeListSynced": true,
           "IsWinnersListSynced": true,
-          "IsSynced": true,
+          <b>"IsSynced": true,</b>
           "IsFailed": false
 <br><br>
 When the "IsSynced" row say true you are ready to start the node up by using command: <br><br>
