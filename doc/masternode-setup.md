@@ -23,8 +23,8 @@ Before you can run a masternode you have to be able to run the Swamp Coin daemon
 The address will be presented back to you, copy it for use in the next steps
 
 2. Send your local wallet 20000 SWAMP by:<br>  
-    a. QT/GUI Wallet: selecting the Send tab, entering the address obtained from step 1 in the "Pay To:" field and entering "1000" in the "Amount" field.  Make sure the "Subtract fee from amount" check box is <b>NOT</b> checked.  You will see the transaction on the screen in the Overview and Transactions tab<br><br>
-    b. Command line: entering command ./swamp-cli sendtoaddress "address from step 1" 1000.  The system will give you the TransID as confirmation <br>
+    a. QT/GUI Wallet: selecting the Send tab, entering the address obtained from step 1 in the "Pay To:" field and entering "20000" in the "Amount" field.  Make sure the "Subtract fee from amount" check box is <b>NOT</b> checked.  You will see the transaction on the screen in the Overview and Transactions tab<br><br>
+    b. Command line: entering command ./swamp-cli sendtoaddress "address from step 1" 20000.  The system will give you the TransID as confirmation <br>
 
 
 3. Now wait for your transaction to have 15 confirmations so the network has been properly updated.  Do this by:
