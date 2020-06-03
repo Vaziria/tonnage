@@ -11,7 +11,7 @@ SWAMP is a egalitarian Proof-of-Work (PoW) cryptocurrency building up a global c
 - Instant send and recieve funds globally without boarders or middle men
 - Transparancy that comes with traditional blockchains
 - Permissionless access to YOUR money... unlike banks
-- Optional private sent features 
+- Optional private send features 
 
 If you like the idea of owning and controlling your own money as well as funding the improvementof mother earthj, feel free to contact us and work with us. For Discussions we use Discord: [Click here to follow invite Link](https://discord.gg/R4FAu6b).  Seek out the Swampcoin channel
 
@@ -24,11 +24,12 @@ If you like the idea of owning and controlling your own money as well as funding
 <tr><td>Hashing algorithm</td><td>YesPoWer</td></tr>
 <tr><td>MN Payment starting block</td><td>1080</td></tr>
 <tr><td>Maximum SWAMP supply</td><td>40,000,000</td></tr>
-<tr><td>Premine</td><td>50,000 SWAMP (primarily for masternodes and swap)</td></tr>
+<tr><td>Premine</td><td>50,000 SWAMP (For masternodes and swap)</td></tr>
 <tr><td>Blocksize</td><td>1 MB</td></tr>
 <tr><td>Blocktime average</td><td>110 seconds (DGW3)</td></tr>
 <tr><td>Number of transaction confirmations</td><td>6</td></tr>
 <tr><td>Mined Maturity</td><td>101 confirmations</td></tr>
 <tr><td>Transaction Maturity</td><td>6 confirmations</td></tr>
 <tr><td>Difficulty Readjustment</td><td>Every block (DGW v3)</td></tr>
+<tr><td>Masternode Collateral</td><td>20,000 SWAMP</td></tr> 
 </table>
