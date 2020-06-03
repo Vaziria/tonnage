@@ -28,7 +28,7 @@ The address will be presented back to you, copy it for use in the next steps
 
 
 3. Now wait for your transaction to have 15 confirmations so the network has been properly updated.  Do this by:
-    a. QT/GUI Wallet: Hovering your mouse over the transaction which will be called "payment to yourself".  Don't worry, it won't show 1000 Swamp coin, only the fee. The wallet will pop up a message such as (6 confirmations, will be available after 10).  You are wating on this to reach 15 confirmations.<br><br>
+    a. QT/GUI Wallet: Hovering your mouse over the transaction which will be called "payment to yourself".  Don't worry, it won't show 20000 Swamp coin, only the fee. The wallet will pop up a message such as (6 confirmations, will be available after 10).  You are wating on this to reach 15 confirmations.<br><br>
     b. Command line: entering command ./swamp-cli listtransactions.  The system will give an output similar to the below, you are waiting on the confirmations to reach 15.<br>
 
                 "account": "",
