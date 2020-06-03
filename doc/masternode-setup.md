@@ -103,7 +103,7 @@ Next you need to think of a rpcuser (user name) and rpcpassword (password) to us
 <br><br>
 
 <b><u>Preparing the conf Files</u></b><br><br>
-Now you are going to update 2 files ending in .conf on your local machine that you sent the 1000 swamp to as well as create 2 .conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
+Now you are going to update 2 files ending in .conf on your local machine that you sent the 20000 swamp to as well as create 2 .conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
 
 a. QT/GUI Wallet: Click the Tools menu then click "Open Masternode Configuration File" which will open a text file.  In the text file you will paste in the following configuration substituting in the information captured in previous steps.<br><br>
 
