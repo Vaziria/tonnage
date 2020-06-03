@@ -6,7 +6,7 @@ Swamp Coin was created to help restore the balance to ecosystems around the worl
 Swamp Coin will be accepted by animal rescues to fund the medical care and adoption fees required to give our swamp based friends new homes and a chance!  We are are a small team taking a steady pace to build the right network and partners to slowly but surely chip away of the overwhelming cost and effort associated with ecosystem homeostasis.
 
 SWAMP is a egalitarian Proof-of-Work (PoW) cryptocurrency building up a global community to be united against the inflationary nature of all world Fiat currency. As governments print an infinite amount of dollars, euros etc., SWAMP remains finite and predicable.  SWAMP is superior to fiat and traditional banks by:
-- Masternodes to support consensus by the people (1000 SWAMP)
+- Masternodes to support consensus by the people (20000 SWAMP)
 - CPU only mining to allow a wider variety of hardware to maximize decentralization
 - Instant send and recieve funds globally without boarders or middle men
 - Transparancy that comes with traditional blockchains
