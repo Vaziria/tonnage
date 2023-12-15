@@ -1,12 +1,12 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Swamp
-Comment=Swamp P2P Cryptocurrency
-Comment[fr]=Swamp, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Swamp, eşten eşe kriptografik sanal para birimi
-Exec=swamp-qt %u
+Name=Tonnage
+Comment=Tonnage P2P Cryptocurrency
+Comment[fr]=Tonnage, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Tonnage, eşten eşe kriptografik sanal para birimi
+Exec=tonnage-qt %u
 Terminal=false
 Type=Application
-Icon=swamp128
-MimeType=x-scheme-handler/swamp;
+Icon=tonnage128
+MimeType=x-scheme-handler/tonnage;
 Categories=Office;Finance;

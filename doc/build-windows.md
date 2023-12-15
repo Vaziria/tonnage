@@ -1,7 +1,7 @@
 WINDOWS BUILD NOTES
 ====================
 
-Some notes on how to build Swamp Core for Windows.
+Some notes on how to build Tonnage Core for Windows.
 
 Most developers use cross-compilation from Ubuntu to build executables for
 Windows. This is also used to build the release binaries.
@@ -27,7 +27,7 @@ Ubuntu Bionic 18.04 <sup>[1](#footnote1)</sup>:
 
 Once the toolchain is installed the build steps are common:
 
-Note that for WSL the Swamp Core source path MUST be somewhere in the default mount file system, for
+Note that for WSL the Tonnage Core source path MUST be somewhere in the default mount file system, for
 example /usr/src/swmp, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that is located directly on the host Windows file system to perform the build.
 
@@ -59,7 +59,7 @@ executables to a directory on the Windows drive in the same directory structure
 as they appear in the release `.zip` archive. This can be done in the following
 way. This will install to `c:\workspace\bitcoin`, for example:
 
-    make install DESTDIR=/mnt/c/workspace/swamp # or any other folder name you like
+    make install DESTDIR=/mnt/c/workspace/tonnage # or any other folder name you like
 
 You can also create an installer using:
 
@@ -90,5 +90,5 @@ Footnotes
 compiler options to allow a choice between either posix or win32 threads. The default option is win32 threads which is the more
 efficient since it will result in binary code that links directly with the Windows kernel32.lib. Unfortunately, the headers
 required to support win32 threads conflict with some of the classes in the C++11 standard library, in particular std::mutex.
-It's not possible to build the Swamp Core code using the win32 version of the Mingw-w64 cross compilers (at least not without
-modifying headers in the Swamp Core source code).
+It's not possible to build the Tonnage Core code using the win32 version of the Mingw-w64 cross compilers (at least not without
+modifying headers in the Tonnage Core source code).

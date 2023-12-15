@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Swamp.
+This directory contains data-driven tests for various aspects of Tonnage.
 
 License
 --------

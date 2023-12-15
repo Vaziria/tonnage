@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,7 @@ OpenURIDialog::OpenURIDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 #if QT_VERSION >= 0x040700
-    ui->uriEdit->setPlaceholderText("swamp:");
+    ui->uriEdit->setPlaceholderText("tonnage:");
 #endif
 }
 
@@ -50,5 +50,5 @@ void OpenURIDialog::on_selectFileButton_clicked()
     if(filename.isEmpty())
         return;
     QUrl fileUri = QUrl::fromLocalFile(filename);
-    ui->uriEdit->setText("swamp:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
+    ui->uriEdit->setText("tonnage:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
 }

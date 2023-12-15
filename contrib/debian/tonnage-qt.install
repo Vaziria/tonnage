@@ -1,0 +1,6 @@
+usr/local/bin/tonnage-qt usr/bin
+share/pixmaps/tonnage32.xpm usr/share/pixmaps
+share/pixmaps/tonnage16.xpm usr/share/pixmaps
+share/pixmaps/tonnage128.png usr/share/pixmaps
+debian/tonnage-qt.desktop usr/share/applications
+debian/tonnage-qt.protocol usr/share/kde4/services/

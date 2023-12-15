@@ -1,8 +1,8 @@
-Source: swamp
+Source: tonnage
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@swamp.org>
-Uploaders: Holger Schinzel <holger@swamp.org>
+Maintainer: Holger Schinzel <holger@tonnage.org>
+Uploaders: Holger Schinzel <holger@tonnage.org>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -24,45 +24,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://swampdev-the-man.github.io/swamp/
-Vcs-Git: git://github.com/swampdev-the-man/swamp.git
-Vcs-Browser: https://github.com/swampdev-the-man/swamp
+Homepage: https://tonnagedev-the-man.github.io/tonnage/
+Vcs-Git: git://github.com/tonnagedev-the-man/tonnage.git
+Vcs-Browser: https://github.com/tonnagedev-the-man/tonnage
 
-Package: swampd
+Package: tonnaged
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Swamp is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Swamp uses peer-to-peer
+ Tonnage is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Tonnage uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Swamp Core
+ and issuing money are carried out collectively by the network. Tonnage Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, swampd, and the CLI tool
- swamp-cli to interact with the daemon.
+ This package provides the daemon, tonnaged, and the CLI tool
+ tonnage-cli to interact with the daemon.
 
-Package: swamp-qt
+Package: tonnage-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Swamp is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Swamp uses peer-to-peer
+ Tonnage is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Tonnage uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Swamp Core
+ and issuing money are carried out collectively by the network. Tonnage Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Swamp-Qt, a GUI for Swamp based on Qt.
+ This package provides Tonnage-Qt, a GUI for Tonnage based on Qt.
 
-Package: swamp-tx
+Package: tonnage-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Swamp is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Swamp uses peer-to-peer
+ Tonnage is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Tonnage uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Swamp Core
+ and issuing money are carried out collectively by the network. Tonnage Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides swamp-tx, a command-line transaction creation
- tool which can be used without a swamp daemon.  Some means of
+ This package provides tonnage-tx, a command-line transaction creation
+ tool which can be used without a tonnage daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

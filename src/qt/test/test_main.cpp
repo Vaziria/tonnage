@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/swamp-config.h"
+#include "config/tonnage-config.h"
 #endif
 
 #include "util.h"
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     // Don't remove this, it's needed to access
     // QCoreApplication:: in the tests
     QCoreApplication app(argc, argv);
-    app.setApplicationName("Swamp-Qt-test");
+    app.setApplicationName("Tonnage-Qt-test");
 
     SSL_library_init();
 

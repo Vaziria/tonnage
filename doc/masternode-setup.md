@@ -1,8 +1,8 @@
 This guide is designed to create a secure masternode.  That means the coins you have will stay safe in your local wallet (i.e. on your pc wallet) and the masternode that will be conencted to by others will be on a different machine (i.e. a VPS such as Vultr, use Vultr with this link and we both get free credit https://www.vultr.com/?ref=8233173 ).
 
-<b><u>Installing Dependeincies for swamp Coin on Your VPS</u></b><br><br>
+<b><u>Installing Dependeincies for tonnage Coin on Your VPS</u></b><br><br>
 
-Before you can run a masternode you have to be able to run the Swamp Coin daemon/wallet.  This requires the installation of several dependenicies.  To install these run the following commands on your VPS:<br><br>
+Before you can run a masternode you have to be able to run the Tonnage Coin daemon/wallet.  This requires the installation of several dependenicies.  To install these run the following commands on your VPS:<br><br>
 
         sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
 
@@ -19,17 +19,17 @@ Before you can run a masternode you have to be able to run the Swamp Coin daemon
 
 1. Create an address in your local wallet by:<br>
     a. QT/GUI Wallet: selecting the Recieve tab, entering a label (name) and pressing the "Request Payment" button<br><br>
-    b. Command line: entering command ./swamp-cli getnewaddress<br><br>
+    b. Command line: entering command ./tonnage-cli getnewaddress<br><br>
 The address will be presented back to you, copy it for use in the next steps
 
-2. Send your local wallet 20000 SWAMP by:<br>  
+2. Send your local wallet 20000 TNN by:<br>  
     a. QT/GUI Wallet: selecting the Send tab, entering the address obtained from step 1 in the "Pay To:" field and entering "20000" in the "Amount" field.  Make sure the "Subtract fee from amount" check box is <b>NOT</b> checked.  You will see the transaction on the screen in the Overview and Transactions tab<br><br>
-    b. Command line: entering command ./swamp-cli sendtoaddress "address from step 1" 20000.  The system will give you the TransID as confirmation <br>
+    b. Command line: entering command ./tonnage-cli sendtoaddress "address from step 1" 20000.  The system will give you the TransID as confirmation <br>
 
 
 3. Now wait for your transaction to have 15 confirmations so the network has been properly updated.  Do this by:
-    a. QT/GUI Wallet: Hovering your mouse over the transaction which will be called "payment to yourself".  Don't worry, it won't show 20000 Swamp coin, only the fee. The wallet will pop up a message such as (6 confirmations, will be available after 10).  You are wating on this to reach 15 confirmations.<br><br>
-    b. Command line: entering command ./swamp-cli listtransactions.  The system will give an output similar to the below, you are waiting on the confirmations to reach 15.<br>
+    a. QT/GUI Wallet: Hovering your mouse over the transaction which will be called "payment to yourself".  Don't worry, it won't show 20000 Tonnage coin, only the fee. The wallet will pop up a message such as (6 confirmations, will be available after 10).  You are wating on this to reach 15 confirmations.<br><br>
+    b. Command line: entering command ./tonnage-cli listtransactions.  The system will give an output similar to the below, you are waiting on the confirmations to reach 15.<br>
 
                 "account": "",
                     "address": "WXQ2sBjp1bNEqrtiCG934Cd2ES5Egtgf4J",
@@ -61,8 +61,8 @@ a. QT/GUI Wallet: Open the debig console by clicking "Tools" then clicking "Debu
 
 Now remove the quotes and the colon from the result of the masternode outputs command for use in the next steps. The end result is a long string and number at the end.  The number will be a 1 or 0 <br><br>
 b. Command line: enter the following 2 commands and save the long string the system will give you for use them in steps:<br>
-            ./swamp-cli masternode outputs<br>
-            ./swamp-cli masternode genkey<br><br> 
+            ./tonnage-cli masternode outputs<br>
+            ./tonnage-cli masternode genkey<br><br> 
             
 Now remove the quotes and the colon from the result of the masternode outputs command for use in the next steps. The end result is a long string and number at the end.  The number will be a 1 or 0
 
@@ -97,13 +97,13 @@ The bold area is your ip address.  Save it somewhere for use in the next steps
 <br><br>
 Next you need to think of a rpcuser (user name) and rpcpassword (password) to use.  these can be anything, just save them off for the next steps.  Good examples are:<br><br>
     
-    rpcuser=swampcoinawesomeuser123123
+    rpcuser=tonnageproawesomeuser123123
     rpcpassword=878765ghjhg675ytfytufgklhlk
     
 <br><br>
 
 <b><u>Preparing the conf Files</u></b><br><br>
-Now you are going to update 2 files ending in .conf on your local machine that you sent the 20000 swamp to as well as create 2 .conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
+Now you are going to update 2 files ending in .conf on your local machine that you sent the 20000 tonnage to as well as create 2 .conf files on the VPS/Linux Server.  These are located in the data directory your wallet is using. When installing the wallet you would have chosen the location but can also access the files by using the buttons in the GUI/QT wallet by:<br><br>
 
 a. QT/GUI Wallet: Click the Tools menu then click "Open Masternode Configuration File" which will open a text file.  In the text file you will paste in the following configuration substituting in the information captured in previous steps.<br><br>
 
@@ -116,7 +116,7 @@ This will look similar to the following:<br><br>
 <br><br>
 b. VPS via Command line: In the termial of your VPS create the folder and the file with the following command:<br><br>
 
-mkdir ~/.swampcore && nano ~/.swampcore/masternode.conf<br><br>
+mkdir ~/.tonnagecore && nano ~/.tonnagecore/masternode.conf<br><br>
 
 Now paste in the following configuration substituting in the information captured in previous steps. It may be easier to do this in a text editor on your local machine so you can paste it all in at once.  <br><br>
 
@@ -129,9 +129,9 @@ This will look similar to the following:<br><br>
 <br><br>
 Save your file.  To save in nano press control and x at the same time, press y to confirm, press enter save<br><br>
 
-The second file you will create is named swamp.conf and will only be done on the VPS.  Create the file in nano by entering the following command:<br><br>
+The second file you will create is named tonnage.conf and will only be done on the VPS.  Create the file in nano by entering the following command:<br><br>
 
-        nano ~/.swampcore/swamp.conf
+        nano ~/.tonnagecore/tonnage.conf
 
 <br><br>
 Add the following substituting in the info you gathered above<br><br>
@@ -149,22 +149,22 @@ Add the following substituting in the info you gathered above<br><br>
 <br><br>
 Save your file.  To save in nano press control and x at the same time, press y to confirm, press enter save<br><br>
 
-It is now time to download and install the Swamp Coin daemon to run on your VPS/Linux Server.  enter the following commands to download and extract the daemon on your VPS.  If you decide to do this in a different folder other than your home folder you need to kconsider that when starting it alter.  This guide assumes you are putting in in your home folder and running as the root user that most VPS providers give you.  First navigate to the Swamp Coin github at https://github.com/swampcoin/swamp/releases and find the release that matches the VPS operating system you arerunning.  This guide is running it on ubuntu 18.04 so substitute in the url that best matching your system:<br><br>
+It is now time to download and install the Tonnage Coin daemon to run on your VPS/Linux Server.  enter the following commands to download and extract the daemon on your VPS.  If you decide to do this in a different folder other than your home folder you need to kconsider that when starting it alter.  This guide assumes you are putting in in your home folder and running as the root user that most VPS providers give you.  First navigate to the Tonnage Coin github at https://github.com/tonnagepro/tonnage/releases and find the release that matches the VPS operating system you arerunning.  This guide is running it on ubuntu 18.04 so substitute in the url that best matching your system:<br><br>
 
-        wget https://github.com/swampcoin/swamp/releases/download/v2.0.0.2/swamp-v2002-ubuntu18-64.zip
-        unzip swamp-v2002-ubuntu18-64.zip
-        chmod swampd swamp-cl swamp-tx 755
+        wget https://github.com/tonnagepro/tonnage/releases/download/v2.0.0.2/tonnage-v2002-ubuntu18-64.zip
+        unzip tonnage-v2002-ubuntu18-64.zip
+        chmod tonnaged tonnage-cl tonnage-tx 755
 
 <br><br>
 Now its time to start the daemon up, do this by entering the following command:
 <br><br>
 
-./swampd
+./tonnaged
 <br><br>
 
 When you start the daemon you must wait until it's fully in sync by entering command:
 <br><br>
-        ./swamp-cli mnsync status
+        ./tonnage-cli mnsync status
 
 The output will look similar to the following:<br><br>
 
@@ -180,17 +180,17 @@ The output will look similar to the following:<br><br>
 <br><br>
 When the "IsSynced" row say true you are ready to start the node up by using command: <br><br>
 
-        ./swamp-cli masternode start-alias mn
+        ./tonnage-cli masternode start-alias mn
  <br><br>       
 
 The "mn" in the command is the name you gave your node.  Feel free to call it anything you like.
 
 You can check status of your masternode by using command: <br><br>
 
-        ./swamp-cli masternode status
+        ./tonnage-cli masternode status
 <br><br>
 If you did everything right you will see "Successfully Started" in the message given
 
-Now its time to set up Sentinel to keep things running smoothly and avoid WATCHDOG_EXPIRED status.  This is not required as your node will still receive paymenrs but still looks better.  Visit https://github.com/swampcoin/sentinel/blob/master/README.md to continue for Linux and https://github.com/swampcoin/sentinel/blob/master/sentinel-for-windows.md for Windows
+Now its time to set up Sentinel to keep things running smoothly and avoid WATCHDOG_EXPIRED status.  This is not required as your node will still receive paymenrs but still looks better.  Visit https://github.com/tonnagepro/sentinel/blob/master/README.md to continue for Linux and https://github.com/tonnagepro/sentinel/blob/master/sentinel-for-windows.md for Windows
 
 

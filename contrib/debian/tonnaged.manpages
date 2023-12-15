@@ -1,0 +1,3 @@
+debian/manpages/tonnaged.1
+debian/manpages/tonnage.conf.5
+debian/manpages/tonnage-cli.1

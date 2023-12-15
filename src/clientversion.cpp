@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both swampd and swamp-qt, to make it harder for attackers to
+ * for both tonnaged and tonnage-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Swamp Core");
+const std::string CLIENT_NAME("Tonnage Core");
 
 /**
  * Client version number

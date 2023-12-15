@@ -763,16 +763,16 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
 border:0;
 }
 
-/* About Swamp Dialog */
+/* About Tonnage Dialog */
 QDialog#AboutDialog {
 background-color:#F8F6F6;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Swamp Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Tonnage Contents */
 margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About Swamp text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About Tonnage text */
 margin-right:10px;
 }
 
@@ -1231,7 +1231,7 @@ min-width:410px;
 margin-right:20px;
 margin-left:0;
 margin-top:15px;
-background-image: url(':/images/trad/swamp_logo_horizontal');
+background-image: url(':/images/trad/tonnage_logo_horizontal');
 background-repeat:none;
 }
 

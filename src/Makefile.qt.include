@@ -1,24 +1,24 @@
-bin_PROGRAMS += qt/swamp-qt
+bin_PROGRAMS += qt/tonnage-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# swamp qt core #
+# tonnage qt core #
 QT_TS = \
-  qt/locale/swamp_bg.ts \
-  qt/locale/swamp_de.ts \
-  qt/locale/swamp_en.ts \
-  qt/locale/swamp_es.ts \
-  qt/locale/swamp_fi.ts \
-  qt/locale/swamp_fr.ts \
-  qt/locale/swamp_it.ts \
-  qt/locale/swamp_ja.ts \
-  qt/locale/swamp_pl.ts \
-  qt/locale/swamp_pt.ts \
-  qt/locale/swamp_ru.ts \
-  qt/locale/swamp_sk.ts \
-  qt/locale/swamp_sv.ts \
-  qt/locale/swamp_vi.ts \
-  qt/locale/swamp_zh_CN.ts \
-  qt/locale/swamp_zh_TW.ts
+  qt/locale/tonnage_bg.ts \
+  qt/locale/tonnage_de.ts \
+  qt/locale/tonnage_en.ts \
+  qt/locale/tonnage_es.ts \
+  qt/locale/tonnage_fi.ts \
+  qt/locale/tonnage_fr.ts \
+  qt/locale/tonnage_it.ts \
+  qt/locale/tonnage_ja.ts \
+  qt/locale/tonnage_pl.ts \
+  qt/locale/tonnage_pt.ts \
+  qt/locale/tonnage_ru.ts \
+  qt/locale/tonnage_sk.ts \
+  qt/locale/tonnage_sv.ts \
+  qt/locale/tonnage_vi.ts \
+  qt/locale/tonnage_zh_CN.ts \
+  qt/locale/tonnage_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -33,7 +33,7 @@ QT_FORMS_UI = \
   qt/forms/openuridialog.ui \
   qt/forms/optionsdialog.ui \
   qt/forms/overviewpage.ui \
-  qt/forms/receiswampinsdialog.ui \
+  qt/forms/receitonnageinsdialog.ui \
   qt/forms/receiverequestdialog.ui \
   qt/forms/debugwindow.ui \
   qt/forms/sendcoinsdialog.ui \
@@ -71,7 +71,7 @@ QT_MOC_CPP = \
   qt/moc_paymentserver.cpp \
   qt/moc_qvalidatedlineedit.cpp \
   qt/moc_qvaluecombobox.cpp \
-  qt/moc_receiswampinsdialog.cpp \
+  qt/moc_receitonnageinsdialog.cpp \
   qt/moc_receiverequestdialog.cpp \
   qt/moc_recentrequeststablemodel.cpp \
   qt/moc_rpcconsole.cpp \
@@ -95,16 +95,16 @@ BITCOIN_MM = \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/swamp.moc \
+  qt/tonnage.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_swamp.cpp
-QT_QRC = qt/swamp.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_swamp_locale.cpp
-QT_QRC_LOCALE = qt/swamp_locale.qrc
+QT_QRC_CPP = qt/qrc_tonnage.cpp
+QT_QRC = qt/tonnage.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_tonnage_locale.cpp
+QT_QRC_LOCALE = qt/tonnage_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -144,7 +144,7 @@ BITCOIN_QT_H = \
   qt/platformstyle.h \
   qt/qvalidatedlineedit.h \
   qt/qvaluecombobox.h \
-  qt/receiswampinsdialog.h \
+  qt/receitonnageinsdialog.h \
   qt/receiverequestdialog.h \
   qt/recentrequeststablemodel.h \
   qt/rpcconsole.h \
@@ -270,7 +270,7 @@ BITCOIN_QT_CPP += \
   qt/overviewpage.cpp \
   qt/paymentrequestplus.cpp \
   qt/paymentserver.cpp \
-  qt/receiswampinsdialog.cpp \
+  qt/receitonnageinsdialog.cpp \
   qt/receiverequestdialog.cpp \
   qt/recentrequeststablemodel.cpp \
   qt/sendcoinsdialog.cpp \
@@ -292,7 +292,7 @@ RES_IMAGES = \
   qt/res/images/light/about.png \
   qt/res/images/light/splash.png \
   qt/res/images/light/splash_testnet.png \
-  qt/res/images/light/swamp_logo_horizontal.png \
+  qt/res/images/light/tonnage_logo_horizontal.png \
   qt/res/images/light/unchecked.png \
   qt/res/images/light/checked.png \
   qt/res/images/light/drkblue_downArrow.png \
@@ -308,7 +308,7 @@ RES_CSS = \
   
 RES_MOVIES = $(wildcard qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/swamp-qt-res.rc
+BITCOIN_RC = qt/res/tonnage-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
@@ -329,70 +329,70 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_swamp_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_tonnage_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# swamp-qt binary #
-qt_swamp_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# tonnage-qt binary #
+qt_tonnage_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_swamp_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_tonnage_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_swamp_qt_SOURCES = qt/swamp.cpp
+qt_tonnage_qt_SOURCES = qt/tonnage.cpp
 if TARGET_DARWIN
-  qt_swamp_qt_SOURCES += $(BITCOIN_MM)
+  qt_tonnage_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_swamp_qt_SOURCES += $(BITCOIN_RC)
+  qt_tonnage_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_swamp_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_tonnage_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_swamp_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_tonnage_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_swamp_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_tonnage_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_swamp_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_tonnage_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_swamp_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_swamp_qt_LIBTOOLFLAGS = --tag CXX
+qt_tonnage_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_tonnage_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-qt/swampstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_consensus_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+qt/tonnagestrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_consensus_a_SOURCES) $(libbitcoin_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/swampstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) qt/swamp.cpp $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: qt/tonnagestrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) qt/tonnage.cpp $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/swamp_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/tonnage_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) $(RCCFLAGS) -name swamp_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) $(RCCFLAGS) -name tonnage_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) $(RCCFLAGS) -name swamp $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) $(RCCFLAGS) -name tonnage $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-swamp_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_swamp_qt_OBJECTS) qt/swamp-qt$(EXEEXT) $(LIBBITCOINQT)
+tonnage_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_tonnage_qt_OBJECTS) qt/tonnage-qt$(EXEEXT) $(LIBBITCOINQT)
 
-swamp_qt : qt/swamp-qt$(EXEEXT)
+tonnage_qt : qt/tonnage-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

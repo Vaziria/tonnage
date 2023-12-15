@@ -1,7 +1,7 @@
 Translation Strings Policy
 ===========================
 
-This document provides guidelines for internationalization of the Swamp Core software.
+This document provides guidelines for internationalization of the Tonnage Core software.
 
 How to translate?
 ------------------
@@ -85,10 +85,10 @@ In Qt code use tr's third argument for optional plurality. For example:
 This adds `<numerusform>`s to the respective `.ts` file, which can be translated separately depending on the language. In English, this is simply:
 
     <message numerus="yes">
-        <source>%n active connection(s) to Swamp network</source>
+        <source>%n active connection(s) to Tonnage network</source>
         <translation>
-            <numerusform>%n active connection to Swamp network</numerusform>
-            <numerusform>%n active connections to Swamp network</numerusform>
+            <numerusform>%n active connection to Tonnage network</numerusform>
+            <numerusform>%n active connections to Tonnage network</numerusform>
         </translation>
     </message>
 

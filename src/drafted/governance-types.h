@@ -16,9 +16,9 @@ enum GovernanceObjectType {
     ValueOverride = 1, 
 
     // -------------------------------
-    // SwampNetwork - is the root node
-    SwampNetwork = 1000,
-    SwampNetworkVariable = 1001,
+    // TonnageNetwork - is the root node
+    TonnageNetwork = 1000,
+    TonnageNetworkVariable = 1001,
     Category = 1002,
 
     // Actors

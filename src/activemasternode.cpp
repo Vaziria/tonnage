@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -158,19 +158,31 @@ void CActiveMasternode::ManageStateInitial(CConnman& connman)
             return;
         }
     }
+    // kampret warning
 
-    if(!fFoundLocal) {
-        nState = ACTIVE_MASTERNODE_NOT_CAPABLE;
-        strNotCapableReason = "Can't detect valid external address. Please consider using the externalip configuration option if problem persists. Make sure to use IPv4 address only.";
-        LogPrintf("CActiveMasternode::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
-        return;
-    }
+    // if(!fFoundLocal) {
+    //     nState = ACTIVE_MASTERNODE_NOT_CAPABLE;
+    //     strNotCapableReason = "Can't detect valid external address. Please consider using the externalip configuration option if problem persists. Make sure to use IPv4 address only.";
+    //     LogPrintf("CActiveMasternode::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
+    //     LogPrintf("kampret get local address %d\n", GetLocal(service)); 
+    //     LogPrintf("kampret get validnet %d\n service %s", CMasternode::IsValidNetAddr(service), service.ToString()); 
+    //     return;
+    // }
 
     int mainnetDefaultPort = Params(CBaseChainParams::MAIN).GetDefaultPort();
+
+    CNetAddr ip;
+    LogPrintf("kampret ip %s---- %s\n", ip.ToStringIP(), service.ToStringIP());
+
+    service.SetPort(mainnetDefaultPort);
+    // service.SetIP(*ip);
+    
+
+    
     if(Params().NetworkIDString() == CBaseChainParams::MAIN) {
         if(service.GetPort() != mainnetDefaultPort) {
             nState = ACTIVE_MASTERNODE_NOT_CAPABLE;
-            strNotCapableReason = strprintf("Invalid port: %u - only %d is supported on mainnet.", service.GetPort(), mainnetDefaultPort);
+            strNotCapableReason = strprintf("Invalid port: %u - only %d is supported on mainnet. masalah port", service.GetPort(), mainnetDefaultPort);
             LogPrintf("CActiveMasternode::ManageStateInitial -- %s: %s\n", GetStateString(), strNotCapableReason);
             return;
         }

@@ -21,8 +21,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef SWAMP_BIP39_H
-#define SWAMP_BIP39_H
+#ifndef TNN_BIP39_H
+#define TNN_BIP39_H
 
 #include "support/allocators/secure.h"
 

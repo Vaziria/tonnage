@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Swamp Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Tonnage Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Swamp-Qt</string>
+  <string>Tonnage-Qt</string>
   
   <key>CFBundleName</key>
-  <string>Swamp-Qt</string>
+  <string>Tonnage-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.swamp.Swamp-Qt</string>
+  <string>org.tonnage.Tonnage-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.swamp.SwampPayment</string>
+      <string>org.tonnage.TonnagePayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>swamp</string>
+        <string>tonnage</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.swamp.paymentrequest</string>
+      <string>org.tonnage.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Swamp payment request</string>
+      <string>Tonnage payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-swamp-payment-request</string>
+        <string>application/x-tonnage-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>swamppaymentrequest</string>
+          <string>tonnagepaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.swamp.paymentrequest</string>
+        <string>org.tonnage.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

@@ -1,5 +1,5 @@
 #!/bin/bash
-if ! [[ "$2" =~ ^(git@)?(www.)?github.com(:|/)SwampOfficial/Swamp(.git)?$ ]]; then
+if ! [[ "$2" =~ ^(git@)?(www.)?github.com(:|/)TonnageOfficial/Tonnage(.git)?$ ]]; then
     exit 0
 fi
 

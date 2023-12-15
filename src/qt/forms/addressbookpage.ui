@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../swamp.qrc"/>
+  <include location="../tonnage.qrc"/>
  </resources>
  <connections/>
 </ui>

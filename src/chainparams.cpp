@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -17,6 +17,9 @@
 #include <boost/assign/list_of.hpp>
 
 #include "chainparamsseeds.h"
+#include <arith_uint256.h>
+
+
 
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
@@ -41,10 +44,44 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Decentralised Economy += VECO; 9 October 2018";
-    const CScript genesisOutputScript = CScript() << ParseHex("0431d9e740dfaa5e7f4c230bcd6ced7e8cdc5bf9f54acbc0f53c10e27a4e661b787a28be070def9b68ef679206cbe4590305ddb8f1bfd1865e20db9cc03ae09819") << OP_CHECKSIG;
+    const char* pszTimestamp = "Decentralised Economy += TONNAGE; 1 December 2023";
+    const CScript genesisOutputScript = CScript() << ParseHex("0490e0d3a1803ea82e2499f2c6e0ab5698cf690df51508e6c4fff02dcf35d13342afdff5d354a7d9f985f0977208af5ebba43fb686188820b15e88ab4a0850a6e1") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
+
+
+static void MiningGenesisBlock(uint32_t nTime, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
+{
+    printf("mining... \n");
+
+	CBlock block = CreateGenesisBlock(nTime, 0, nBits, nVersion, genesisReward);
+    arith_uint256 cc;
+	arith_uint256 bnTarget;
+	bnTarget.SetCompact(block.nBits);
+    
+	for(uint32_t nNonce = 0; nNonce < UINT32_MAX; nNonce++){
+		block.nNonce = nNonce;
+		uint256 hash = block.GetHash();
+
+		cc = UintToArith256(hash);
+        // printf("\n n is %d\n", nNonce);
+        if ((nNonce % 500) == 0) {
+            printf("\nhash %s", block.ToString().c_str());
+        }
+        
+
+		if(cc <= bnTarget) {
+			printf("\ngenesis is %s\n", block.ToString().c_str());
+			printf("\npow is %s\n", hash.GetHex().c_str());
+			printf("\ngenesisNonce is %d\n", nNonce);
+			std::cout << "Genesis Merkle " << block.hashMerkleRoot.GetHex() << std::endl;
+			return;
+		}
+	}
+
+	    assert(false);
+}
+
 
 class CMainParams : public CChainParams {
 public:
@@ -61,16 +98,16 @@ public:
         consensus.nBudgetProposalEstablishingTime = 60*60*24;
         consensus.nSuperblockStartBlock = 99999999;
         consensus.nSuperblockCycle = 21600;
-        consensus.nGovernanceMinQuorum = 10;
+        consensus.nGovernanceMinQuorum = 1; // config count masternode
         consensus.nGovernanceFilterElements = 20000;
         consensus.nMasternodeMinimumConfirmations = 15;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x000003fd1dff397d1be86183efd9e13f0316b5f5a3082bac91975a421bc43021");
-        consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 86400; // Swamp: 1 day
+        consensus.BIP34Hash = uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a");
+        consensus.powLimit = uint256S("00ffffffff000000000000000000000000000000000000000000000000000000");
+        consensus.nPowTargetTimespan = 86400; // Tonnage: 1 day
         consensus.nPowTargetSpacing = 110; // ALmost 2.0 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -98,50 +135,58 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000003fd1dff397d1be86183efd9e13f0316b5f5a3082bac91975a421bc43021");
+        consensus.defaultAssumeValid = uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x73; //s
-        pchMessageStart[1] = 0x77; //w
-        pchMessageStart[2] = 0x61; //a
-        pchMessageStart[3] = 0x6d; //m
-	    vAlertPubKey = ParseHex("047738e763b45593b3bc080cfd2ec07ce725d2c39b18e4bccced4ed75856afa15e88399cc894bbe9f10d98dd715081a27d3c45e5e7382f07c4c6bd32a9acda5c7d");
+        pchMessageStart[0] = 0x74; //t
+        pchMessageStart[1] = 0x6E; //n
+        pchMessageStart[2] = 0x6E; //n
+	    pchMessageStart[3] = 0x67; //g
+	    vAlertPubKey = ParseHex("0490e0d3a1803ea82e2499f2c6e0ab5698cf690df51508e6c4fff02dcf35d13342afdff5d354a7d9f985f0977208af5ebba43fb686188820b15e88ab4a0850a6e1");
         nDefaultPort = 33333;
         
         nMaxTipAge = 21600;
         nDelayGetHeadersTime = 86400;
         nPruneAfterHeight = 100000;
-
-        genesis = CreateGenesisBlock(1539043200, 1599202, 0x1e0ffff0, 1, 20 * COIN);
+        // MiningGenesisBlock(1702025205, 0x20001fff, 1, 20 * COIN);
+        genesis = CreateGenesisBlock(1702025205, 508, 0x20001fff, 1, 20 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000003fd1dff397d1be86183efd9e13f0316b5f5a3082bac91975a421bc43021"));
-        assert(genesis.hashMerkleRoot == uint256S("0xde4fe11d6d0c735a192d4e6eed593ad575ccd671ff4ff0d9188e347e067d028d"));
+        assert(consensus.hashGenesisBlock == uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a"));
+        assert(genesis.hashMerkleRoot == uint256S("0x918a235664c468286f81dd8c5d5abd4394bcfe58221d083f75a898618a5dd84c"));
 
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("45.32.217.164", "45.32.217.164"));
-		vSeeds.push_back(CDNSSeedData("108.61.202.115", "108.61.202.115"));
-		vSeeds.push_back(CDNSSeedData("104.207.149.95", "104.207.149.95"));
-		vSeeds.push_back(CDNSSeedData("45.32.176,249", "45.32.176,249"));
-		vSeeds.push_back(CDNSSeedData("198.13.39.174", "198.13.39.174"));
-	        vSeeds.push_back(CDNSSeedData("104.155.177.16", "104.155.177.16"));
+
+        // change aku
+        
+        vSeeds.push_back(CDNSSeedData("172.16.238.11", "172.16.238.11"));
+        // vSeeds.push_back(CDNSSeedData("172.16.238.12", "172.16.238.12"));
+		// vSeeds.push_back(CDNSSeedData("108.61.202.115", "108.61.202.115"));
+		// vSeeds.push_back(CDNSSeedData("104.207.149.95", "104.207.149.95"));
+		// vSeeds.push_back(CDNSSeedData("45.32.176,249", "45.32.176,249"));
+		// vSeeds.push_back(CDNSSeedData("198.13.39.174", "198.13.39.174"));
+	    //     vSeeds.push_back(CDNSSeedData("104.155.177.16", "104.155.177.16"));
+
+        // change aku end
+
+       
 
 
-        // Swamp addresses start with 's'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,73);
-        // Swamp script addresses start with '9'
+        // Tonnage addresses start with 's'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,67);
+        // Tonnage script addresses start with '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,20);
-        // Swamp private keys start with 'X'
+        // Tonnage private keys start with 'X'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,75);
-        // Swamp BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+        // Tonnage BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        // Swamp BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+        // Tonnage BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        // Swamp BIP44 coin type is '5'
+        // Tonnage BIP44 coin type is '5'
         nExtCoinType = 5;
 
         //vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -158,13 +203,13 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (     0, uint256S("0x000003fd1dff397d1be86183efd9e13f0316b5f5a3082bac91975a421bc43021"))
-			(100000, uint256S("0x0000038508708ac5387431ad5b53e439fb8b3e9ab2e6aae28e9573e5a19f4df8"))
-		        (200000, uint256S("0x000001a1593ab16e3c7d586594a9489b548e07fa94015d4b330431940408dbbc")),
-                1595325340, // * UNIX timestamp of last checkpoint block
-                200000,      // * total number of transactions between genesis and last checkpoint
+            (     0, uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a")),
+			// (100000, uint256S("0x0000038508708ac5387431ad5b53e439fb8b3e9ab2e6aae28e9573e5a19f4df8"))
+		    //     (200000, uint256S("0x000001a1593ab16e3c7d586594a9489b548e07fa94015d4b330431940408dbbc")),
+                1702025205, // * UNIX timestamp of last checkpoint block
+                0,      // * total number of transactions between genesis and last checkpoint
                             //   (the tx=... number in the SetBestChain debug.log lines)
-                708         // * estimated number of transactions per day after checkpoint
+                10         // * estimated number of transactions per day after checkpoint
         };
     }
 };
@@ -195,9 +240,9 @@ public:
         consensus.nMajorityRejectBlockOutdated = 75;
         consensus.nMajorityWindow = 100;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00000997e30aad936446ab7226cecd21875e867a57aca1a46d17be4316bab391");
+        consensus.BIP34Hash = uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Swamp: 1 day
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Tonnage: 1 day
         consensus.nPowTargetSpacing = 1.0 * 60; // almost 1.0 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
@@ -225,40 +270,48 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00000997e30aad936446ab7226cecd21875e867a57aca1a46d17be4316bab391");
+        consensus.defaultAssumeValid = uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a");
 
-        pchMessageStart[0] = 0x73; //s
-        pchMessageStart[1] = 0x77; //w
-        pchMessageStart[2] = 0x6d; //m
-	    pchMessageStart[3] = 0x70; //p 
-        vAlertPubKey = ParseHex("04a6df8bb80ab3113dcae21d2a9ced9b2f48811ce079e44a19a53d0aae223388b79f5dfec3abe9dccfe250edd0caf243168ce4f0965fd8f0857c390c76da1a1db1");
+        pchMessageStart[0] = 0x74; //t
+        pchMessageStart[1] = 0x6E; //n
+        pchMessageStart[2] = 0x6E; //n
+	    pchMessageStart[3] = 0x67; //g
+        vAlertPubKey = ParseHex("0490e0d3a1803ea82e2499f2c6e0ab5698cf690df51508e6c4fff02dcf35d13342afdff5d354a7d9f985f0977208af5ebba43fb686188820b15e88ab4a0850a6e1");
         nDefaultPort = 33445;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1533168000, 189394, 0x1e0ffff0, 1, 20 * COIN);
+        // MiningGenesisBlock(1702025205, 890380, 0x20001fff, 1, 20 * COIN);
+        genesis = CreateGenesisBlock(1702025205, 508, 0x20001fff, 1, 20 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000997e30aad936446ab7226cecd21875e867a57aca1a46d17be4316bab391"));
-        assert(genesis.hashMerkleRoot == uint256S("0xde4fe11d6d0c735a192d4e6eed593ad575ccd671ff4ff0d9188e347e067d028d"));
+        assert(consensus.hashGenesisBlock == uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a"));
+        assert(genesis.hashMerkleRoot == uint256S("0x918a235664c468286f81dd8c5d5abd4394bcfe58221d083f75a898618a5dd84c"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("swamp.info", "test01.swamp.info"));
-		//vSeeds.push_back(CDNSSeedData("swamp.info", "test02.swamp.info"));
 
-        // Testnet Swamp addresses start with 'y'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Testnet Swamp script addresses start with '8' or '9'
+        // change aku
+        vSeeds.push_back(CDNSSeedData("172.16.238.11", "172.16.238.11"));
+        vSeeds.push_back(CDNSSeedData("172.16.238.12", "172.16.238.12"));
+        // vSeeds.push_back(CDNSSeedData("tonnage.info", "test01.tonnage.info"));
+
+        // change aku end
+
+		// vSeeds.push_back(CDNSSeedData("tonnage.info", "test02.tonnage.info"));
+
+        // Testnet Tonnage addresses start with 'y'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,66);
+        // Testnet Tonnage script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Swamp BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Tonnage BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet Swamp BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Tonnage BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Testnet Swamp BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Tonnage BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         //vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -275,8 +328,8 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (0, uint256S("0x00000997e30aad936446ab7226cecd21875e867a57aca1a46d17be4316bab391")),
-                1533168000, //1519569150 * UNIX timestamp of last checkpoint block
+            (     0, uint256S("0x001fdfbc6d82a2983190eb819b35359d976e13e001a27a1082f423a9a9929e0a")),
+                1702025205, //1519569150 * UNIX timestamp of last checkpoint block
                 0,          // * total number of transactions between genesis and last checkpoint
                             //   (the tx=... number in the SetBestChain debug.log lines)
                 10          // * estimated number of transactions per day after checkpoint
@@ -313,7 +366,7 @@ public:
         consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
         consensus.BIP34Hash = uint256();
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Swamp: 1 day
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Tonnage: 1 day
         consensus.nPowTargetSpacing = 2.0 * 60; // almost 2.0 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -345,11 +398,13 @@ public:
         nDelayGetHeadersTime = 0; // never delay GETHEADERS in regtests
         nDefaultPort = 8334;
         nPruneAfterHeight = 1000;
-
         genesis = CreateGenesisBlock(1531958400, 1, 0x207fffff, 1, 20 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x7f6c3cd530b97a2f646ff8311e5ff79a5ebaec359dacea13d67a7169b3f4e897"));
-        assert(genesis.hashMerkleRoot == uint256S("0xde4fe11d6d0c735a192d4e6eed593ad575ccd671ff4ff0d9188e347e067d028d"));
+        // printf("%s\n", consensus.hashGenesisBlock.ToString().c_str());
+        // printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        
+        assert(consensus.hashGenesisBlock == uint256S("0x0952899ff58c8bb3824e32cf80096870b458690965708a14145c9381b10a81a2"));
+        assert(genesis.hashMerkleRoot == uint256S("0x918a235664c468286f81dd8c5d5abd4394bcfe58221d083f75a898618a5dd84c"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
@@ -369,18 +424,18 @@ public:
             0,
             0
         };
-        // Regtest Swamp addresses start with 'y'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
-        // Regtest Swamp script addresses start with '8' or '9'
+        // Regtest Tonnage addresses start with 'y'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 67);
+        // Regtest Tonnage script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 239);
-        // Regtest Swamp BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest Tonnage BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest Swamp BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest Tonnage BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Regtest Swamp BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest Tonnage BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
    }
 };

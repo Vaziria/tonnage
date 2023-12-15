@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/swamp-config.h"
+#include "config/tonnage-config.h"
 #endif
 
 #include "optionsdialog.h"
@@ -92,10 +92,10 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     }
     
     /* Theme selector */
-    ui->theme->addItem(QString("SWAMP-Tan"), QVariant("light"));
-    ui->theme->addItem(QString("SWAMP-Black"), QVariant("drkblue"));
-    ui->theme->addItem(QString("SWAMP-Blue"), QVariant("crownium"));
-    ui->theme->addItem(QString("SWAMP-Chocolate"), QVariant("trad"));
+    ui->theme->addItem(QString("TNN-Tan"), QVariant("light"));
+    ui->theme->addItem(QString("TNN-Black"), QVariant("drkblue"));
+    ui->theme->addItem(QString("TNN-Blue"), QVariant("crownium"));
+    ui->theme->addItem(QString("TNN-Chocolate"), QVariant("trad"));
     /* Language selector */
     QDir translations(":translations");
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));

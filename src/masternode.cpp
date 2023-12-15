@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -268,8 +268,14 @@ bool CMasternode::IsValidNetAddr(CService addrIn)
 {
     // TODO: regtest is fine with any addresses for now,
     // should probably be a bit smarter if one day we start to implement tests for this
+
+    LogPrintf("kampret checking address valid %s -- %d -- %d -- %d -- \n\n", addrIn.ToStringIP(), addrIn.IsIPv4(), IsReachable(addrIn), addrIn.IsRoutable());
+
+    // kampret warning
+
+    // && addrIn.IsRoutable()
     return Params().NetworkIDString() == CBaseChainParams::REGTEST ||
-            (addrIn.IsIPv4() && IsReachable(addrIn) && addrIn.IsRoutable());
+            (addrIn.IsIPv4() && IsReachable(addrIn));
 }
 
 masternode_info_t CMasternode::GetInfo()
@@ -561,7 +567,7 @@ bool CMasternodeBroadcast::CheckOutpoint(int& nDos)
         }
 
         if (err == COLLATERAL_INVALID_AMOUNT) {
-            LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO should have 20000 SWAMP, masternode=%s\n", vin.prevout.ToStringShort());
+            LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO should have 20000 TNN, masternode=%s\n", vin.prevout.ToStringShort());
             return false;
         }
 
@@ -587,7 +593,7 @@ bool CMasternodeBroadcast::CheckOutpoint(int& nDos)
     }
 
     // verify that sig time is legit in past
-    // should be at least not earlier than block when 20000 SWAMP tx got nMasternodeMinimumConfirmations
+    // should be at least not earlier than block when 20000 TNN tx got nMasternodeMinimumConfirmations
     uint256 hashBlock = uint256();
     CTransaction tx2;
     GetTransaction(vin.prevout.hash, tx2, Params().GetConsensus(), hashBlock, true);
@@ -595,7 +601,7 @@ bool CMasternodeBroadcast::CheckOutpoint(int& nDos)
         LOCK(cs_main);
         BlockMap::iterator mi = mapBlockIndex.find(hashBlock);
         if (mi != mapBlockIndex.end() && (*mi).second) {
-            CBlockIndex* pMNIndex = (*mi).second; // block for 10000 SWAMP tx -> 1 confirmation
+            CBlockIndex* pMNIndex = (*mi).second; // block for 10000 TNN tx -> 1 confirmation
             CBlockIndex* pConfIndex = chainActive[pMNIndex->nHeight + Params().GetConsensus().nMasternodeMinimumConfirmations - 1]; // block where tx got nMasternodeMinimumConfirmations
             if(pConfIndex->GetBlockTime() > sigTime) {
                 LogPrintf("CMasternodeBroadcast::CheckOutpoint -- Bad sigTime %d (%d conf block is at %d) for Masternode %s %s\n",

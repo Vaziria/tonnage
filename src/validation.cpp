@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -54,7 +54,7 @@
 using namespace std;
 
 #if defined(NDEBUG)
-# error "Swamp Core cannot be compiled without assertions."
+# error "Tonnage Core cannot be compiled without assertions."
 #endif
 
 /**
@@ -1395,6 +1395,9 @@ void static InvalidChainFound(CBlockIndex* pindexNew)
       log(pindexNew->nChainWork.getdouble())/log(2.0), DateTimeStrFormat("%Y-%m-%d %H:%M:%S",
       pindexNew->GetBlockTime()));
     CBlockIndex *tip = chainActive.Tip();
+
+    // printf(tip);
+
     assert (tip);
     LogPrintf("%s:  current best=%s  height=%d  log2_work=%.8g  date=%s\n", __func__,
       tip->GetBlockHash().ToString(), chainActive.Height(), log(tip->nChainWork.getdouble())/log(2.0),
@@ -1849,7 +1852,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("swamp-scriptch");
+    RenameThread("tonnage-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2201,19 +2204,19 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     int64_t nTime3 = GetTimeMicros(); nTimeConnect += nTime3 - nTime2;
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime3 - nTime2), 0.001 * (nTime3 - nTime2) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime3 - nTime2) / (nInputs-1), nTimeConnect * 0.000001);
 
-    // SWAMP : MODIFIED TO CHECK MASTERNODE PAYMENTS
+    // TNN : MODIFIED TO CHECK MASTERNODE PAYMENTS
     CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, chainparams.GetConsensus());
     std::string strError = "";
     if (!IsBlockValueValid(block, pindex->nHeight, blockReward, strError)) {
-        return state.DoS(0, error("ConnectBlock(SWAMP): %s", strError), REJECT_INVALID, "bad-cb-amount");
+        return state.DoS(0, error("ConnectBlock(TNN): %s", strError), REJECT_INVALID, "bad-cb-amount");
     }
 
     if (!IsBlockPayeeValid(block.vtx[0], pindex->nHeight, blockReward)) {
         mapRejectedBlocks.insert(make_pair(phashdb->GetHash(block), GetTime()));
-        return state.DoS(0, error("ConnectBlock(SWAMP): couldn't find masternode or superblock payments"),
+        return state.DoS(0, error("ConnectBlock(TNN): couldn't find masternode or superblock payments"),
                                 REJECT_INVALID, "bad-cb-payee");
     }
-    // END SWAMP
+    // END TNN
 
     if (!control.Wait())
         return state.DoS(100, false);
@@ -3087,6 +3090,7 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
 {
     assert(phashdb != NULL);
     // Check proof of work matches claimed amount
+    // printf("\ngenesisNonce is %d\n", block.nBits);
     if (fCheckPOW && !CheckProofOfWork(phashdb->GetHash(block), block.nBits, Params().GetConsensus()))
         return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
 
@@ -3139,7 +3143,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
             return state.DoS(100, false, REJECT_INVALID, "bad-cb-multiple", false, "more than one coinbase");
 
 
-    // SWAMP : CHECK TRANSACTIONS FOR INSTANTSEND
+    // TNN : CHECK TRANSACTIONS FOR INSTANTSEND
 
     if(sporkManager.IsSporkActive(SPORK_3_INSTANTSEND_BLOCK_FILTERING)) {
         // We should never accept block which conflicts with completed transaction lock,
@@ -3162,10 +3166,10 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
             }
         }
     } else {
-        LogPrintf("CheckBlock(SWAMP): spork is off, skipping transaction locking checks\n");
+        LogPrintf("CheckBlock(TNN): spork is off, skipping transaction locking checks\n");
     }
 
-    // END SWAMP
+    // END TNN
 
     // Check transactions
     for (const auto& tx : block.vtx)

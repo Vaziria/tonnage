@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -128,7 +128,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
 
     GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
 
-    QString windowTitle = tr("Swamp Core") + " - ";
+    QString windowTitle = tr("Tonnage Core") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     enableWallet = !GetBoolArg("-disablewallet", false);
@@ -210,9 +210,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     web->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     web->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    web->setToolTip(QApplication::translate("OverviewPage", "Visit Swamp Coin on Facebook.", nullptr));
+    web->setToolTip(QApplication::translate("OverviewPage", "Visit Tonnage Coin on Facebook.", nullptr));
 #endif // QT_NO_TOOLTIP
-    web->setText(QApplication::translate("OverviewPage", "<a href=\"https://www.facebook.com/Swamp-Coin-102068301351759\"><img src=\":/icons/web\" width=\"21\" height=\"21\"></a>", nullptr));
+    web->setText(QApplication::translate("OverviewPage", "<a href=\"https://www.facebook.com/Tonnage-Coin-102068301351759\"><img src=\":/icons/web\" width=\"21\" height=\"21\"></a>", nullptr));
             
             QLabel* www = new QLabel();
     www->setObjectName(QStringLiteral("www"));
@@ -223,9 +223,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     www->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     www->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    www->setToolTip(QApplication::translate("OverviewPage", "Visit the Swamp Coin Website.", nullptr));
+    www->setToolTip(QApplication::translate("OverviewPage", "Visit the Tonnage Coin Website.", nullptr));
 #endif // QT_NO_TOOLTIP
-    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://swampcoin.tech\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
+    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://tonnagepro.tech\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
             
             
     QLabel* mcm = new QLabel();
@@ -237,9 +237,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     mcm->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     mcm->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    mcm->setToolTip(QApplication::translate("OverviewPage", "Swamp Coin is Open Source on Github.", nullptr));
+    mcm->setToolTip(QApplication::translate("OverviewPage", "Tonnage Coin is Open Source on Github.", nullptr));
 #endif // QT_NO_TOOLTIP
-    mcm->setText(QApplication::translate("OverviewPage", "<a href=\"https://github.com/swampcoin/swamp\"><img src=\":/icons/mcm\" width=\"21\" height=\"21\"></a>", nullptr));
+    mcm->setText(QApplication::translate("OverviewPage", "<a href=\"https://github.com/tonnagepro/tonnage\"><img src=\":/icons/mcm\" width=\"21\" height=\"21\"></a>", nullptr));
     QLabel* twitter = new QLabel();
     twitter->setObjectName(QStringLiteral("twitter"));
     twitter->setMinimumSize(QSize(21, 21));
@@ -249,9 +249,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     twitter->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     twitter->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    twitter->setToolTip(QApplication::translate("OverviewPage", "Follow Swamp Coin on Twitter.", nullptr));
+    twitter->setToolTip(QApplication::translate("OverviewPage", "Follow Tonnage Coin on Twitter.", nullptr));
 #endif // QT_NO_TOOLTIP
-    twitter->setText(QApplication::translate("OverviewPage", "<a href=\"https://twitter.com/SwampCoin\"><img src=\":/icons/twitter\" width=\"21\" height=\"21\"></a>", nullptr));
+    twitter->setText(QApplication::translate("OverviewPage", "<a href=\"https://twitter.com/tonnagepro\"><img src=\":/icons/twitter\" width=\"21\" height=\"21\"></a>", nullptr));
     QLabel* discord = new QLabel();
     discord->setObjectName(QStringLiteral("discord"));
     discord->setMinimumSize(QSize(21, 21));
@@ -261,7 +261,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     discord->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     discord->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    discord->setToolTip(QApplication::translate("OverviewPage", "Join the Official Swamp Coin Discord Community.", nullptr));
+    discord->setToolTip(QApplication::translate("OverviewPage", "Join the Official Tonnage Coin Discord Community.", nullptr));
 #endif // QT_NO_TOOLTIP
     discord->setText(QApplication::translate("OverviewPage", "<a href=\"https://discord.gg/r7zKfy5\"><img src=\":/icons/discord\" width=\"21\" height=\"21\"></a>", nullptr));
             
@@ -274,9 +274,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     webs->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     webs->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    webs->setToolTip(QApplication::translate("OverviewPage", "Explore the Swamp Coin Blockchain.", nullptr));
+    webs->setToolTip(QApplication::translate("OverviewPage", "Explore the Tonnage Coin Blockchain.", nullptr));
 #endif // QT_NO_TOOLTIP
-    webs->setText(QApplication::translate("OverviewPage", "<a href=\"http://explorer.swampcoin.tech\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
+    webs->setText(QApplication::translate("OverviewPage", "<a href=\"http://explorer.tonnagepro.tech\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
      
     frameSocialLayout->addWidget(webs);        
     frameSocialLayout->addWidget(www);        
@@ -390,7 +390,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/" + theme + "/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Swamp address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Tonnage address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -405,7 +405,7 @@ void BitcoinGUI::createActions()
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
     receiveCoinsAction = new QAction(QIcon(":/icons/" + theme + "/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and swamp: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and tonnage: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -467,15 +467,15 @@ void BitcoinGUI::createActions()
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(QIcon(":/icons/" + theme + "/about"), tr("&About Swamp Core"), this);
-    aboutAction->setStatusTip(tr("Show information about Swamp Core"));
+    aboutAction = new QAction(QIcon(":/icons/" + theme + "/about"), tr("&About Tonnage Core"), this);
+    aboutAction->setStatusTip(tr("Show information about Tonnage Core"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutAction->setEnabled(false);
     aboutQtAction = new QAction(QIcon(":/icons/" + theme + "/about_qt"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/" + theme + "/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for Swamp Core"));
+    optionsAction->setStatusTip(tr("Modify configuration options for Tonnage Core"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     optionsAction->setEnabled(false);
     toggleHideAction = new QAction(QIcon(":/icons/" + theme + "/about"), tr("&Show / Hide"), this);
@@ -492,9 +492,9 @@ void BitcoinGUI::createActions()
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/" + theme + "/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Swamp addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Tonnage addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Swamp addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Tonnage addresses"));
 
     openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
@@ -525,11 +525,11 @@ void BitcoinGUI::createActions()
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a swamp: URI or payment request"));
+    openAction->setStatusTip(tr("Open a tonnage: URI or payment request"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the Swamp Core help message to get a list with possible Swamp Core command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the Tonnage Core help message to get a list with possible Tonnage Core command-line options"));
 
     showPrivateSendHelpAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&PrivateSend information"), this);
     showPrivateSendHelpAction->setMenuRole(QAction::NoRole);
@@ -815,7 +815,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
 void BitcoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Swamp Core client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Tonnage Core client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getTrayAndWindowIcon());
     trayIcon->hide();
@@ -1015,7 +1015,7 @@ void BitcoinGUI::updateNetworkState()
     }
 
     if (clientModel->getNetworkActive()) {
-        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Swamp network", "", count));
+        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Tonnage network", "", count));
     } else {
         labelConnectionsIcon->setToolTip(tr("Network activity disabled"));
         icon = ":/icons/" + theme + "/network_disabled";
@@ -1209,7 +1209,7 @@ void BitcoinGUI::setAdditionalDataSyncProgress(double nSyncProgress)
 
 void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Swamp Core"); // default title
+    QString strTitle = tr("Tonnage Core"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1235,7 +1235,7 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
             break;
         }
     }
-    // Append title to "Swamp Core - "
+    // Append title to "Tonnage Core - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 

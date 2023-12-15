@@ -1,21 +1,21 @@
 Shared Libraries
 ================
 
-## swampconsensus
+## tonnageconsensus
 
-The purpose of this library is to make the verification functionality that is critical to Swamp's consensus available to other applications, e.g. to language bindings.
+The purpose of this library is to make the verification functionality that is critical to Tonnage's consensus available to other applications, e.g. to language bindings.
 
 ### API
 
-The interface is defined in the C header `swampconsensus.h` located in  `src/script/swampconsensus.h`.
+The interface is defined in the C header `tonnageconsensus.h` located in  `src/script/tonnageconsensus.h`.
 
 #### Version
 
-`swampconsensus_version` returns an `unsigned int` with the the API version *(currently at an experimental `0`)*.
+`tonnageconsensus_version` returns an `unsigned int` with the the API version *(currently at an experimental `0`)*.
 
 #### Script Validation
 
-`swampconsensus_verify_script` returns an `int` with the status of the verification. It will be `1` if the input script correctly spends the previous output `scriptPubKey`.
+`tonnageconsensus_verify_script` returns an `int` with the status of the verification. It will be `1` if the input script correctly spends the previous output `scriptPubKey`.
 
 ##### Parameters
 - `const unsigned char *scriptPubKey` - The previous output script that encumbers spending.
@@ -24,18 +24,18 @@ The interface is defined in the C header `swampconsensus.h` located in  `src/scr
 - `unsigned int txToLen` - The number of bytes for the `txTo`.
 - `unsigned int nIn` - The index of the input in `txTo` that spends the `scriptPubKey`.
 - `unsigned int flags` - The script validation flags *(see below)*.
-- `swampconsensus_error* err` - Will have the error/success code for the operation *(see below)*.
+- `tonnageconsensus_error* err` - Will have the error/success code for the operation *(see below)*.
 
 ##### Script Flags
-- `swampconsensus_SCRIPT_FLAGS_VERIFY_NONE`
-- `swampconsensus_SCRIPT_FLAGS_VERIFY_P2SH` - Evaluate P2SH ([BIP16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) subscripts
-- `swampconsensus_SCRIPT_FLAGS_VERIFY_DERSIG` - Enforce strict DER ([BIP66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki)) compliance
+- `tonnageconsensus_SCRIPT_FLAGS_VERIFY_NONE`
+- `tonnageconsensus_SCRIPT_FLAGS_VERIFY_P2SH` - Evaluate P2SH ([BIP16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) subscripts
+- `tonnageconsensus_SCRIPT_FLAGS_VERIFY_DERSIG` - Enforce strict DER ([BIP66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki)) compliance
 
 ##### Errors
-- `swampconsensus_ERR_OK` - No errors with input parameters *(see the return value of `swampconsensus_verify_script` for the verification status)*
-- `swampconsensus_ERR_TX_INDEX` - An invalid index for `txTo`
-- `swampconsensus_ERR_TX_SIZE_MISMATCH` - `txToLen` did not match with the size of `txTo`
-- `swampconsensus_ERR_DESERIALIZE` - An error deserializing `txTo`
+- `tonnageconsensus_ERR_OK` - No errors with input parameters *(see the return value of `tonnageconsensus_verify_script` for the verification status)*
+- `tonnageconsensus_ERR_TX_INDEX` - An invalid index for `txTo`
+- `tonnageconsensus_ERR_TX_SIZE_MISMATCH` - `txToLen` did not match with the size of `txTo`
+- `tonnageconsensus_ERR_DESERIALIZE` - An error deserializing `txTo`
 
 ### Example Implementations
 - [NBitcoin](https://github.com/NicolasDorier/NBitcoin/blob/master/NBitcoin/Script.cs#L814) (.NET Bindings)

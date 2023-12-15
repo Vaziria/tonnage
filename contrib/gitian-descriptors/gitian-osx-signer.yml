@@ -1,5 +1,5 @@
 ---
-name: "swamp-dmg-signer"
+name: "tonnage-dmg-signer"
 suites:
 - "trusty"
 architectures:
@@ -8,10 +8,10 @@ packages:
 - "faketime"
 reference_datetime: "2017-01-01 00:00:00"
 remotes:
-- "url": "https://github.com/SwampOfficial/Swamp-detached-sigs.git"
+- "url": "https://github.com/TonnageOfficial/Tonnage-detached-sigs.git"
   "dir": "signature"
 files:
-- "swamp-osx-unsigned.tar.gz"
+- "tonnage-osx-unsigned.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
@@ -28,10 +28,10 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=swamp-osx-unsigned.tar.gz
-  SIGNED=swamp-osx-signed.dmg
+  UNSIGNED=tonnage-osx-unsigned.tar.gz
+  SIGNED=tonnage-osx-signed.dmg
 
   tar -xf ${UNSIGNED}
   ./detached-sig-apply.sh ${UNSIGNED} signature/osx
-  ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "Swamp-Core" -no-pad -r -dir-mode 0755 -apple -o uncompressed.dmg signed-app
+  ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "Tonnage-Core" -no-pad -r -dir-mode 0755 -apple -o uncompressed.dmg signed-app
   ${WRAP_DIR}/dmg dmg uncompressed.dmg ${OUTDIR}/${SIGNED}

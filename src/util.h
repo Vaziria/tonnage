@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 #define BITCOIN_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/swamp-config.h"
+#include "config/tonnage-config.h"
 #endif
 
 #include "compat.h"
@@ -35,14 +35,14 @@
 
 // Uncomment the following line to enable debugging messages
 // or enable on a per file basis prior to inclusion of util.h
-//#define ENABLE_SWAMP_DEBUG
-#ifdef ENABLE_SWAMP_DEBUG
+//#define ENABLE_TNN_DEBUG
+#ifdef ENABLE_TNN_DEBUG
 #define DBG( x ) x
 #else
 #define DBG( x ) 
 #endif
 
-//Swamp only features
+//Tonnage only features
 
 extern bool fMasterNode;
 extern bool fLiteMode;
@@ -249,7 +249,7 @@ std::string GetThreadName();
  */
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("swamp-%s", name);
+    std::string s = strprintf("tonnage-%s", name);
     RenameThread(s.c_str());
     try
     {

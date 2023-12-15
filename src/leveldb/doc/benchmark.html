@@ -200,7 +200,7 @@ parameters are varied.  For the baseline:</p>
     <td class="c3"><div class="bsql" style="width:350px">&nbsp;</div></td></tr>
 </table>
 <p>LevelDB doesn't perform as well with large values of 100,000 bytes each. This is because LevelDB writes keys and values at least twice: first time to the transaction log, and second time (during a compaction) to a sorted file.
-With larger values, LevelDB's per-operation efficiency is swamped by the
+With larger values, LevelDB's per-operation efficiency is tonnageed by the
 cost of extra copies of large values.</p>
 <h3>B. Batch Writes</h3>
 <p>A batch write is a set of writes that are applied atomically to the underlying database. A single batch of N writes may be significantly faster than N individual writes. The following benchmark writes one thousand batches where each batch contains one thousand 100-byte values. TreeDB does not support batch writes and is omitted from this benchmark.</p>

@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  tonnaged The Tonnage Core server.
+#
+#
+# chkconfig: 345 80 20
+# description: tonnaged
+# processname: tonnaged
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/tonnaged, see below
+if [ -f /etc/sysconfig/tonnaged ]; then
+        . /etc/sysconfig/tonnaged
+fi
+
+RETVAL=0
+
+prog=tonnaged
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/tonnaged
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/tonnaged}
+
+# tonnaged defaults to /usr/bin/tonnaged, override with BITCOIND_BIN
+tonnaged=${BITCOIND_BIN-/usr/bin/tonnaged}
+
+# tonnaged opts default to -disablewallet, override with BITCOIND_OPTS
+tonnaged_opts=${BITCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $tonnaged $tonnaged_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

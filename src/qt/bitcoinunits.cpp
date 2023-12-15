@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,9 +20,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(SWAMP);
-    unitlist.append(mSWAMP);
-    unitlist.append(uSWAMP);
+    unitlist.append(TNN);
+    unitlist.append(mTNN);
+    unitlist.append(uTNN);
     unitlist.append(veffs);
     return unitlist;
 }
@@ -31,9 +31,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case SWAMP:
-    case mSWAMP:
-    case uSWAMP:
+    case TNN:
+    case mTNN:
+    case uTNN:
     case veffs:
         return true;
     default:
@@ -47,9 +47,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case SWAMP: return QString("SWAMP");
-            case mSWAMP: return QString("mSWAMP");
-            case uSWAMP: return QString::fromUtf8("μSWAMP");
+            case TNN: return QString("TNN");
+            case mTNN: return QString("mTNN");
+            case uTNN: return QString::fromUtf8("μTNN");
             case veffs: return QString("veffs");
             default: return QString("???");
         }
@@ -58,9 +58,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case SWAMP: return QString("tSWAMP");
-            case mSWAMP: return QString("mtSWAMP");
-            case uSWAMP: return QString::fromUtf8("μtSWAMP");
+            case TNN: return QString("tTNN");
+            case mTNN: return QString("mtTNN");
+            case uTNN: return QString::fromUtf8("μtTNN");
             case veffs: return QString("tveffs");
             default: return QString("???");
         }
@@ -73,10 +73,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case SWAMP: return QString("Swamp");
-            case mSWAMP: return QString("Milli-Swamp (1 / 1" THIN_SP_UTF8 "000)");
-            case uSWAMP: return QString("Micro-Swamp (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case veffs: return QString("Ten Nano-Swamp (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case TNN: return QString("Tonnage");
+            case mTNN: return QString("Milli-Tonnage (1 / 1" THIN_SP_UTF8 "000)");
+            case uTNN: return QString("Micro-Tonnage (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case veffs: return QString("Ten Nano-Tonnage (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -84,10 +84,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case SWAMP: return QString("TestSwamps");
-            case mSWAMP: return QString("Milli-TestSwamp (1 / 1" THIN_SP_UTF8 "000)");
-            case uSWAMP: return QString("Micro-TestSwamp (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case veffs: return QString("Ten Nano-TestSwamp (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case TNN: return QString("TestTonnages");
+            case mTNN: return QString("Milli-TestTonnage (1 / 1" THIN_SP_UTF8 "000)");
+            case uTNN: return QString("Micro-TestTonnage (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case veffs: return QString("Ten Nano-TestTonnage (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -97,9 +97,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case SWAMP:  return 100000000;
-    case mSWAMP: return 100000;
-    case uSWAMP: return 100;
+    case TNN:  return 100000000;
+    case mTNN: return 100000;
+    case uTNN: return 100;
     case veffs: return 1;
     default:   return 100000000;
     }
@@ -109,9 +109,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case SWAMP: return 8;
-    case mSWAMP: return 5;
-    case uSWAMP: return 2;
+    case TNN: return 8;
+    case mTNN: return 5;
+    case uTNN: return 2;
     case veffs: return 0;
     default: return 0;
     }

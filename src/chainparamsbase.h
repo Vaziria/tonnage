@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between swamp-cli and swampd)
- * of a given instance of the Swamp system.
+ * CBaseChainParams defines the base parameters (shared between tonnage-cli and tonnaged)
+ * of a given instance of the Tonnage system.
  */
 class CBaseChainParams
 {

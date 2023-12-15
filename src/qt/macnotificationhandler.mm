@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.swamp.Swamp-Qt";
+        return @"org.tonnage.Tonnage-Qt";
     } else {
         return [self __bundleIdentifier];
     }

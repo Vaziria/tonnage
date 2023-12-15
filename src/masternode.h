@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -252,7 +252,7 @@ public:
         return false;
     }
 
-    /// Is the input associated with collateral public key? (and there is 20000 SWAMP - checking if valid masternode)
+    /// Is the input associated with collateral public key? (and there is 20000 TNN - checking if valid masternode)
     bool IsInputAssociatedWithPubkey();
 
     bool IsValidNetAddr();

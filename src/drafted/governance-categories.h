@@ -4,22 +4,22 @@
 
 	* means the category has an associated class
 	
-	CSwampNetwork: SWAMP NETWORK (ROOT)
+	CTonnageNetwork: TNN NETWORK (ROOT)
 	has:
 		vector<CNetworkVariable> vecNetworkVariables;
-		vector<CSwampProject> vecProjects;
+		vector<CTonnageProject> vecProjects;
 		vector<CGovernanceObject> vecProposals;
 		vector<CBudgetContract> vecContracts;
 		vector<CBudgetUsers> vecUsers;
 
-	CSwampProject:
+	CTonnageProject:
 	has:
 		name
 		employees
 
 */
 
-	// SWAMP NETWORK (ROOT)
+	// TNN NETWORK (ROOT)
 	// 	-> NETWORK VARIABLE
 	// 		-> switch, setting
 	// 	-> CATEGORIES
@@ -49,7 +49,7 @@
 	// 			-> USER1 (only users are allowed here in this scope)
 	// 			-> USER2
 	// 		-> GROUP2 (EVO)
-	// 			-> VALUEOVERRIDE (STORE=SWAMPDRIVE)
+	// 			-> VALUEOVERRIDE (STORE=TNNDRIVE)
 	// 			-> USER1
 
 	// 	-> COMPANIES

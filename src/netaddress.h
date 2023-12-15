@@ -6,7 +6,7 @@
 #define BITCOIN_NETADDRESS_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/swamp-config.h"
+#include "config/tonnage-config.h"
 #endif
 
 #include "compat.h"

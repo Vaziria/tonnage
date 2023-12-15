@@ -1,8 +1,8 @@
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT software license, see the accompanying
-#ifndef SWAMP_HDCHAIN_H
-#define SWAMP_HDCHAIN_H
+#ifndef TNN_HDCHAIN_H
+#define TNN_HDCHAIN_H
 
 #include "key.h"
 #include "sync.h"
@@ -150,4 +150,4 @@ public:
     std::string GetKeyPath() const;
 };
 
-#endif // SWAMP_HDCHAIN_H
+#endif // TNN_HDCHAIN_H

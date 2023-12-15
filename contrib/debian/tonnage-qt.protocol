@@ -1,0 +1,11 @@
+[Protocol]
+exec=tonnage-qt '%u'
+protocol=tonnage
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

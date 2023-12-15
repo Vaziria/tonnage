@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2018 The Dash Core developers 
-// Copyright (c) 2018-2018 The Swamp Core developers
+// Copyright (c) 2018-2018 The Tonnage Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "privatesend.h"
@@ -307,10 +307,10 @@ int CPrivateSend::GetDenominations(const std::vector<CTxOut>& vecTxOut, bool fSi
 bool CPrivateSend::GetDenominationsBits(int nDenom, std::vector<int> &vecBitsRet)
 {
     // ( bit on if present, 4 denominations example )
-    // bit 0 - 100SWAMP+1
-    // bit 1 - 10SWAMP+1
-    // bit 2 - 1SWAMP+1
-    // bit 3 - .1SWAMP+1
+    // bit 0 - 100TNN+1
+    // bit 1 - 10TNN+1
+    // bit 2 - 1TNN+1
+    // bit 3 - .1TNN+1
 
     int nMaxDenoms = vecStandardDenominations.size();
 
@@ -439,14 +439,14 @@ void CPrivateSend::SyncTransaction(const CTransaction& tx, const CBlock* pblock)
 //TODO: Rename/move to core
 void ThreadCheckPrivateSend(CConnman& connman)
 {
-    if(fLiteMode) return; // disable all Swamp specific functionality
+    if(fLiteMode) return; // disable all Tonnage specific functionality
 
     static bool fOneThread;
     if(fOneThread) return;
     fOneThread = true;
 
     // Make this thread recognisable as the PrivateSend thread
-    RenameThread("swamp-ps");
+    RenameThread("tonnage-ps");
 
     unsigned int nTick = 0;
 

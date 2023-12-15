@@ -1775,7 +1775,7 @@ const char * const wordlist[] = {
 "suspect",
 "sustain",
 "swallow",
-"swamp",
+"tonnage",
 "swap",
 "swarm",
 "swear",

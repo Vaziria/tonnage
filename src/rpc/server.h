@@ -123,7 +123,7 @@ public:
 };
 
 /**
- * Swamp RPC command dispatcher.
+ * Tonnage RPC command dispatcher.
  */
 class CRPCTable
 {

@@ -1,6 +1,6 @@
 <h1>Linux cross-compile</h1>
 
-This guide describes how to build Swamp Core wallet from source under Ubuntu Linux. It is intended to serve as a simple guide for general compilation of non-deterministic binary files from the stable source code. For a more detailed guide, see the macOS Build Notes. A standard installation of Ubuntu Linux 18.04 LTS will be used as an environment for the build. We assume you are running as a user with sudo permissions. First add the necessary extra repository and update all packages:
+This guide describes how to build Tonnage Core wallet from source under Ubuntu Linux. It is intended to serve as a simple guide for general compilation of non-deterministic binary files from the stable source code. For a more detailed guide, see the macOS Build Notes. A standard installation of Ubuntu Linux 18.04 LTS will be used as an environment for the build. We assume you are running as a user with sudo permissions. First add the necessary extra repository and update all packages:
 
 
 sudo add-apt-repository ppa:bitcoin/bitcoin
@@ -22,11 +22,11 @@ Optionally install the Qt dependencies if you want to build the Dash GUI:
 
 sudo apt install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
 
-Download the stable Swamp Coin repository:
+Download the stable Tonnage Coin repository:
 
-git clone https://github.com/swampcoin/swamp.git
+git clone https://github.com/tonnagepro/tonnage.git
 
-cd swamp
+cd tonnage
 
 A copy of the macOS SDK is required during the build process. 
 
@@ -71,4 +71,4 @@ make -C depends HOST=x86_64-apple-darwin11
 
 make
 
-~/swamp/src now contains the compiled Swamp binaries, and ~/swamp/src/qt contains the Swamp GUI wallet.
+~/tonnage/src now contains the compiled Tonnage binaries, and ~/tonnage/src/qt contains the Tonnage GUI wallet.

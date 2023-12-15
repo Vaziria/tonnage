@@ -6,13 +6,13 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/swamp
-src/swampd
-src/swamp-cli
-src/swamp-tx
-src/test/test_swamp
-src/qt/test/test_swamp-qt
-src/bench/bench_swamp
+src/tonnage
+src/tonnaged
+src/tonnage-cli
+src/tonnage-tx
+src/test/test_tonnage
+src/qt/test/test_tonnage-qt
+src/bench/bench_tonnage
 
 # autoreconf
 Makefile.in
@@ -35,8 +35,8 @@ config.log
 config.status
 configure
 libtool
-src/config/swamp-config.h
-src/config/swamp-config.h.in
+src/config/tonnage-config.h
+src/config/tonnage-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -81,12 +81,12 @@ libconftest.dylib*
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-swamp-qt
-swamp-Qt.app
+tonnage-qt
+tonnage-Qt.app
 
 # Unit-tests
 Makefile.test
-swamp-qt_test
+tonnage-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -100,7 +100,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_swamp.coverage/
+test_tonnage.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -124,11 +124,11 @@ share/BitcoindComparisonTool.jar
 /doc/doxygen/
 
 libvecoconsensus.pc
-src/qt/swamp-qt.bash
+src/qt/tonnage-qt.bash
 qa/pull-tester/tests-config.sh
 
 #development symlinks
-swamp-cli
-swampd
-swamp-qt
+tonnage-cli
+tonnaged
+tonnage-qt
 make
